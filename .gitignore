@@ -16,3 +16,6 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+# Dont include bundles, just redownload via :BundleInstall
+bundle/
