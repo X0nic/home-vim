@@ -111,3 +111,5 @@ colorscheme desert-warm-256
 
 Bundle 'airblade/vim-gitgutter'
 
+Bundle 'Valloric/YouCompleteMe'
+
