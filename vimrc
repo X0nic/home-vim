@@ -109,3 +109,5 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'desert-warm-256'
 colorscheme desert-warm-256
 
+Bundle 'airblade/vim-gitgutter'
+
