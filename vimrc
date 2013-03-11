@@ -115,4 +115,7 @@ Bundle 'Valloric/YouCompleteMe'
 
 Bundle 'godlygeek/tabular'
 
+Bundle 'sjl/gundo.vim'
+map <leader>u :GundoToggle<cr>
+
 
