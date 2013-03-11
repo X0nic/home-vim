@@ -68,9 +68,15 @@ set title                         " Set the terminal's title
 
 set visualbell                    " No beeping.
 
-set nobackup                      " Don't make a backup before overwriting a file.
-set nowritebackup                 " And again.
-set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
+" -----------------------------
+" Backups, Tmp Files, and Undo
+" -----------------------------
+set backup
+set backupdir=~/.vim/.backup
+set directory=~/.vim/.tmp
+" Persistent Undo
+set undofile
+set undodir=~/.vim/.undo
 
 " UNCOMMENT TO USE
 set tabstop=2                    " Global tab width.
