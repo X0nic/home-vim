@@ -104,3 +104,8 @@ let NERDTreeQuitOnOpen=1
 
 Bundle 'matchit.zip'
 runtime macros/matchit.vim
+
+Bundle 'flazz/vim-colorschemes'
+Bundle 'desert-warm-256'
+colorscheme desert-warm-256
+
