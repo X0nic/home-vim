@@ -113,3 +113,6 @@ Bundle 'airblade/vim-gitgutter'
 
 Bundle 'Valloric/YouCompleteMe'
 
+Bundle 'godlygeek/tabular'
+
+
