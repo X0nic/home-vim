@@ -100,7 +100,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/ctrlp.vim'
 
 Bundle 'tComment'
-nnoremap // :TComment<CR>
+nnoremap // :TComment<CR>j
 vnoremap // :TComment<CR>
 
 Bundle 'scrooloose/nerdtree'
