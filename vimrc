@@ -44,6 +44,9 @@ filetype plugin indent on     " required!
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
 
+syntax enable
+set autoread                      " Automatically reload changes if detected
+
 set backspace=indent,eol,start    " Intuitive backspacing.
 
 set hidden                        " Handle multiple buffers better.
@@ -67,6 +70,13 @@ set scrolloff=3                   " Show 3 lines of context around the cursor.
 set title                         " Set the terminal's title
 
 set visualbell                    " No beeping.
+
+" Source the vimrc file after saving it
+if has("autocmd")
+  autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+nmap <leader>v :edit $MYVIMRC<CR>
+
 
 " -----------------------------
 " Backups, Tmp Files, and Undo
