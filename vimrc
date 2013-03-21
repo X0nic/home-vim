@@ -105,6 +105,7 @@ vnoremap // :TComment<CR>
 
 Bundle 'scrooloose/nerdtree'
 map <leader>n :NERDTreeToggle<cr>
+map <leader>r :NERDTreeFind<cr>
 
 " For NERDTree to be able to show hidden files.
 let NERDTreeShowHidden=1
