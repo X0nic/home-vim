@@ -141,6 +141,7 @@ vmap <Leader>t" :Tabularize /"<CR>
 Bundle 'sjl/gundo.vim'
 map <leader>u :GundoToggle<cr>
 
+Bundle 'nginx.vim'
 
 if has("gui_macvim")
   " Open ctrlp with cmd+p
