@@ -171,7 +171,7 @@ if has("gui_macvim")
   map <D-k> :NERDTreeToggle<CR>
 
   " Stop completion with enter, in addition to default ctrl+y
-  imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
+  " imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 
   map <D-u> :GundoToggle<cr>
 
