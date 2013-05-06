@@ -158,7 +158,7 @@ if has("gui_macvim")
   nmap <D-M-LEFT> gT
 
   " Comment lines with cmd+/
-  map <D-/> :TComment<cr>
+  map <D-/> :TComment<cr>j
   vmap <D-/> :TComment<cr>gv
 
   " Indent lines with cmd+[ and cmd+]
