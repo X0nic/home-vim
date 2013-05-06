@@ -96,6 +96,9 @@ set expandtab                    " Use spaces instead of tabs
 " We don't need no stinking whitespace
 autocmd FileType coffee,css,cucumber,haml,ruby,sass,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+" https://github.com/ggreer/the_silver_searcher
+Bundle 'rking/ag.vim'
+
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/ctrlp.vim'
 
