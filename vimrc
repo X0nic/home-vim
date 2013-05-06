@@ -168,7 +168,7 @@ if has("gui_macvim")
   vmap <D-]> >gv
 
   "Open sidebar with cmd+k
-  map <D-k> :NERDTreeTabsToggle<CR>
+  map <D-k> :NERDTreeToggle<CR>
 
   " Stop completion with enter, in addition to default ctrl+y
   imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
