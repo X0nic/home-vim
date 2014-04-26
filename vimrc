@@ -1,9 +1,10 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
+
+let mapleader = ","
 
 "let g:Powerline_symbols = 'fancy'
 
@@ -21,7 +22,10 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
+Bundle 'tpope/vim-surround.git'
+Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'ack.vim'
+Bundle 'SirVer/ultisnips'
 
 " vim-scripts repos
 Bundle 'L9'
@@ -77,11 +81,13 @@ if has("autocmd")
 endif
 nmap <leader>v :edit $MYVIMRC<CR>
 
+" Mouse in terminal
+set mouse=a
 
 " -----------------------------
 " Backups, Tmp Files, and Undo
 " -----------------------------
-set backup
+set nobackup
 set backupdir=~/.vim/.backup
 set directory=~/.vim/.tmp
 " Persistent Undo
@@ -93,14 +99,55 @@ set tabstop=2                    " Global tab width.
 set shiftwidth=2                 " And again, related.
 set expandtab                    " Use spaces instead of tabs
 
+" Display extra whitespace
+set list listchars=tab:»·,trail:·
+
 " We don't need no stinking whitespace
 autocmd FileType coffee,css,cucumber,haml,ruby,sass,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+" http://robots.thoughtbot.com/post/48275867281/vim-splits-move-faster-and-more-naturally
+" Easier split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" More natural split opening
+set splitbelow
+set splitright
+
+"Max out the height of the current split
+" ctrl + w _
+
+"Max out the width of the current split
+" ctrl + w |
+
+"Normalize all split sizes, which is very handy when resizing terminal
+" ctrl + w =
+
+inoremap jj <ESC>
+
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
+command! Q q " Bind :Q to :q
+command! Qall qall 
+
+" Disable Ex mode
+map Q <Nop>
+
+" Disable K looking stuff up
+map K <Nop>
 
 " https://github.com/ggreer/the_silver_searcher
 Bundle 'rking/ag.vim'
 
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/ctrlp.vim'
+nmap <C-p> :CtrlP<cr>
+
+Bundle 'Shougo/vimproc.vim'
+Bundle 'unite.vim'
 
 Bundle 'tComment'
 nnoremap // :TComment<CR>j
@@ -114,18 +161,20 @@ map <leader>r :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
 
 " Close NERDTree after a file has been opened.
-let NERDTreeQuitOnOpen=1
+" let NERDTreeQuitOnOpen=1
 
 Bundle 'matchit.zip'
 runtime macros/matchit.vim
 
-Bundle 'flazz/vim-colorschemes'
 Bundle 'desert-warm-256'
+Bundle 'croaky/vim-colors-github'
 colorscheme desert-warm-256
+" colorscheme github
 
 Bundle 'airblade/vim-gitgutter'
 
 Bundle 'Valloric/YouCompleteMe'
+let g:EclimCompletionMethod = 'omnifunc'
 
 Bundle 'godlygeek/tabular'
 nmap <Leader>t= :Tabularize /=<CR>
@@ -145,6 +194,8 @@ Bundle 'sjl/gundo.vim'
 map <leader>u :GundoToggle<cr>
 
 Bundle 'nginx.vim'
+
+Bundle 'rails.vim'
 
 if has("gui_macvim")
   " Open ctrlp with cmd+p
@@ -192,3 +243,55 @@ nnoremap <C-n> :call NumberToggle()<cr>
 
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
+
+" Bundle 'mhinz/vim-startify'
+" " ---------------
+" " vim-startify
+" " ---------------
+" let g:startify_bookmarks = [ '~/.vim/vimrc',
+"                             \'~/homefiles/zshrc',
+"                             \'~/homefiles/gitconfig',
+"                             \'~/homefiles/gemrc']
+" let g:startify_show_files_number=20
+
+" Cursor settings. This makes terminal vim sooo much nicer!
+" Tmux will only forward escape sequences to the terminal if surrounded by a DCS
+" sequence
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+" Unite
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" nmap <C-p> :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
+
+" ---------------
+" UltiSnips
+" ---------------
+let g:UltiSnipsSnippetDirectories=["MyUltiSnips"]
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
