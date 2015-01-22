@@ -26,6 +26,7 @@ Bundle 'tpope/vim-surround.git'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'ack.vim'
 Bundle 'SirVer/ultisnips'
+Bundle 'kchmck/vim-coffee-script'
 
 " vim-scripts repos
 Bundle 'L9'
