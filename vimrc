@@ -104,7 +104,7 @@ set expandtab                    " Use spaces instead of tabs
 set list listchars=tab:»·,trail:·
 
 " We don't need no stinking whitespace
-autocmd FileType coffee,css,cucumber,haml,ruby,sass,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType coffee,css,cucumber,haml,ruby,sass,yaml,thor autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " http://robots.thoughtbot.com/post/48275867281/vim-splits-move-faster-and-more-naturally
 " Easier split navigation
