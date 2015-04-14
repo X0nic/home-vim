@@ -319,3 +319,14 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " Replace insert pry breakpoint in insert mode
 imap !!p require 'pry' ; binding.pry
+
+" Yank current file
+" https://github.com/benzittlau/vim-castle/blob/master/home/.vim/autoload/file_yank.vim
+function! GetCurrentFileAndLine()
+  " A regex for all files that you might want to test from
+  let file = @%
+  let @* = file . ":" . line(".")
+endfunction
+
+command! YankCurrentFileAndLine call GetCurrentFileAndLine()
+silent! nmap <silent> <Leader>y :YankCurrentFileAndLine<CR>
