@@ -1,5 +1,7 @@
-set nocompatible               " be iMproved
-filetype off                   " required!
+source ~/.vim/vundle.vim
+
+" Automatically detect file types. (must turn on after Vundle)
+filetype plugin indent on
 
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
@@ -7,13 +9,6 @@ set encoding=utf-8 " Necessary to show Unicode glyphs
 let mapleader = ","
 
 "let g:Powerline_symbols = 'fancy'
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
 
 " My Bundles here:
 "
@@ -34,17 +29,6 @@ Bundle 'L9'
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
 " ...
-
-filetype plugin indent on     " required!
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
 
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
