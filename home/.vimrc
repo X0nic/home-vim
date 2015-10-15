@@ -29,6 +29,9 @@ Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'ack.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'osyo-manga/vim-over'
+Bundle 'benmills/vimux'
 
 " vim-scripts repos
 Bundle 'L9'
@@ -222,6 +225,95 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " Replace insert pry breakpoint in insert mode
 imap !!p require 'pry' ; binding.pry
+imap !!P require 'pry' ; binding.pry
 
 command! YankCurrentFileAndLine call GetCurrentFileAndLine()
 silent! nmap <silent> <Leader>y :YankCurrentFileAndLine<CR>
+
+command! VimuxTestLine call vimux#TestCurrentLine()
+silent! nmap <silent> <Leader>sz :VimuxTestLine <CR>
+
+command! RunLastCommand call vimux#RunLastCommand()
+silent! nmap <silent> <Leader>sl :RunLastCommand<CR>
+
+command! TestFullFile call vimux#TestFullFile()
+silent! nmap <silent> <Leader>sf :TestFullFile<CR>
+
+command! RubocopCurrentFile call vimux#RubocopCurrentFile()
+silent! nmap <silent> <Leader>sr :RubocopCurrentFile<CR>
+
+command! StopSpring call vimux#StopSpring()
+silent! nmap <silent> <Leader>ss :StopSpring<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Selecta Mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Run a given vim command on the results of fuzzy selecting from a given shell
+" command. See usage below.
+function! SelectaCommand(choice_command, selecta_args, vim_command)
+  try
+    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+  catch /Vim:Interrupt/
+    " Swallow the ^C so that the redraw below happens; otherwise there will be
+    " leftovers from selecta on the screen
+    redraw!
+    return
+  endtry
+  redraw!
+  exec a:vim_command . " " . selection
+endfunction
+
+function! SelectaFile(path)
+  call SelectaCommand("find " . a:path . "/* -type f", "", ":e")
+endfunction
+
+nnoremap <leader>f :call SelectaFile(".")<cr>
+nnoremap <leader>gv :call SelectaFile("app/views")<cr>
+nnoremap <leader>gc :call SelectaFile("app/controllers")<cr>
+nnoremap <leader>gm :call SelectaFile("app/models")<cr>
+nnoremap <leader>gh :call SelectaFile("app/helpers")<cr>
+nnoremap <leader>gl :call SelectaFile("lib")<cr>
+nnoremap <leader>gp :call SelectaFile("public")<cr>
+nnoremap <leader>gs :call SelectaFile("public/stylesheets")<cr>
+nnoremap <leader>gf :call SelectaFile("features")<cr>
+
+"Fuzzy select
+function! SelectaIdentifier()
+  " Yank the word under the cursor into the z register
+  normal "zyiw
+  " Fuzzy match files in the current directory, starting with the word under
+  " the cursor
+  call SelectaCommand("find * -type f", "-s " . @z, ":e")
+endfunction
+nnoremap <c-g> :call SelectaIdentifier()<cr>
+
+
+" quicker tab jumping
+map <leader>1 1gt
+map <leader>2 2gt
+map <leader>3 3gt
+map <leader>4 4gt
+map <leader>5 5gt
+map <leader>6 6gt
+map <leader>7 7gt
+map <leader>8 8gt
+map <leader>9 9gt
+map <leader>0 :tablast<CR>
+
+" Quick new tab
+map <leader>tn :tabe %<cr>
+
+" Insert a hash rocket with <c-l>
+imap <c-l> <space>=><space>
+
+nnoremap <Leader>vfr :call VisualFindAndReplace()<CR>
+xnoremap <Leader>vfr :call VisualFindAndReplaceWithSelection()<CR>
+
+function! VisualFindAndReplace()
+    :OverCommandLine%s/
+    :w
+endfunction
+function! VisualFindAndReplaceWithSelection() range
+    :'<,'>OverCommandLine s/
+    :w
+endfunction
