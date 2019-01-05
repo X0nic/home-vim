@@ -1,20 +1,5 @@
 source ~/.vim/vundle.vim
 
-" Automatically detect file types. (must turn on after Vundle)
-filetype plugin indent on
-
-" Do the platform specific stuff
-source ~/.vim/platforms.vim
-
-" Configure basic vim settings, no key mappings
-source ~/.vim/config.vim
-
-" Set the vim theme
-source ~/.vim/theme.vim
-
-" Here be the functions
-source ~/.vim/functions.vim
-
 "let g:Powerline_symbols = 'fancy'
 
 " My Bundles here:
@@ -32,6 +17,14 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'osyo-manga/vim-over'
 Bundle 'benmills/vimux'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'lambdatoast/elm.vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'slim-template/vim-slim'
+Plugin 'digitaltoad/vim-pug'
+Plugin 'ternjs/tern_for_vim'
+
+let g:rustfmt_autosave = 1
 
 " vim-scripts repos
 Bundle 'L9'
@@ -39,6 +32,22 @@ Bundle 'L9'
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
 " ...
+
+
+" Automatically detect file types. (must turn on after Vundle)
+filetype plugin indent on
+
+" Do the platform specific stuff
+source ~/.vim/platforms.vim
+
+" Configure basic vim settings, no key mappings
+source ~/.vim/config.vim
+
+" Set the vim theme
+source ~/.vim/theme.vim
+
+" Here be the functions
+source ~/.vim/functions.vim
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
@@ -77,6 +86,8 @@ nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 "Normalize all split sizes, which is very handy when resizing terminal
 " ctrl + w =
 
+let g:mustache_abbreviations = 1
+
 inoremap jj <ESC>
 
 map <C-s> <esc>:w<CR>
@@ -95,8 +106,21 @@ map K <Nop>
 Bundle 'rking/ag.vim'
 
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'kien/ctrlp.vim'
-nmap <C-p> :CtrlP<cr>
+" Bundle 'kien/ctrlp.vim'
+" nmap <C-p> :CtrlP<cr>
+
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects
+  " .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 " Bundle 'Shougo/vimproc.vim'
 " Bundle 'unite.vim'
@@ -126,20 +150,20 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+let g:syntastic_javascript_checkers = ['eslint']
 " let g:syntastic_aggregate_errors = 1
+
+" autocmd bufwritepost *.js silent !standard --fix %
+" set autoread
 
 Bundle 'matchit.zip'
 runtime macros/matchit.vim
 
-Bundle 'desert-warm-256'
-Bundle 'croaky/vim-colors-github'
-colorscheme desert-warm-256
-" colorscheme github
 
 Bundle 'airblade/vim-gitgutter'
 
 Bundle 'Valloric/YouCompleteMe'
-let g:EclimCompletionMethod = 'omnifunc'
+" let g:EclimCompletionMethod = 'omnifunc'
 
 Bundle 'godlygeek/tabular'
 nmap <Leader>t= :Tabularize /=<CR>
@@ -148,8 +172,8 @@ nmap <Leader>t: :Tabularize /:\zs<CR>
 vmap <Leader>t: :Tabularize /:\zs<CR>
 nmap <Leader>t, :Tabularize /,\zs<CR>
 vmap <Leader>t, :Tabularize /,\zs<CR>
-nmap <Leader>t> :Tabularize /=>\zs<CR>
-vmap <Leader>t> :Tabularize /=>\zs<CR>
+nmap <Leader>t> :Tabularize /=><CR>
+vmap <Leader>t> :Tabularize /=><CR>
 nmap <Leader>t- :Tabularize /-<CR>
 vmap <Leader>t- :Tabularize /-<CR>
 nmap <Leader>t" :Tabularize /"<CR>
@@ -266,9 +290,10 @@ endfunction
 function! SelectaFile(path)
   " call SelectaCommand("find " . a:path . "/* -type f", "", ":e")
   " call SelectaCommand("find " . a:path . "/* -type f -not -path './node_modules/*'", "", ":e")
-  call SelectaCommand("ag -l " . a:path . "/ ", "", ":e")
+  call SelectaCommand("ag -l --nocolor " . a:path , "", ":e")
 endfunction
 
+nmap <C-p> :call SelectaFile(".")<cr>
 nnoremap <leader>f :call SelectaFile(".")<cr>
 nnoremap <leader>gv :call SelectaFile("app/views")<cr>
 nnoremap <leader>gc :call SelectaFile("app/controllers")<cr>
@@ -319,3 +344,7 @@ function! VisualFindAndReplaceWithSelection() range
     :'<,'>OverCommandLine s/
     :w
 endfunction
+
+let g:tern_show_argument_hints='on_hold'
+let g:tern_map_keys=1
+let g:tern_map_prefix = '<leader>'
