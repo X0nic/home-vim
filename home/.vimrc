@@ -10,6 +10,8 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-surround.git'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-projectionist'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'ack.vim'
 Bundle 'SirVer/ultisnips'
@@ -23,6 +25,9 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'slim-template/vim-slim'
 Plugin 'digitaltoad/vim-pug'
 Plugin 'ternjs/tern_for_vim'
+" Plugin  '/usr/local/opt/fzf'
+Plugin  'junegunn/fzf.vim'
+Plugin 'tomlion/vim-solidity'
 
 let g:rustfmt_autosave = 1
 
@@ -103,7 +108,7 @@ map Q <Nop>
 map K <Nop>
 
 " https://github.com/ggreer/the_silver_searcher
-Bundle 'rking/ag.vim'
+" Bundle 'rking/ag.vim'
 
 Bundle 'Lokaltog/vim-powerline'
 " Bundle 'kien/ctrlp.vim'
@@ -184,7 +189,7 @@ map <leader>u :GundoToggle<cr>
 
 Bundle 'nginx.vim'
 
-Bundle 'rails.vim'
+" Bundle 'rails.vim'
 
 
 nnoremap <C-n> :call NumberToggle()<cr>
@@ -269,50 +274,50 @@ silent! nmap <silent> <Leader>sr :RubocopCurrentFile<CR>
 command! StopSpring call vimux#StopSpring()
 silent! nmap <silent> <Leader>ss :StopSpring<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Selecta Mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Run a given vim command on the results of fuzzy selecting from a given shell
-" command. See usage below.
-function! SelectaCommand(choice_command, selecta_args, vim_command)
-  try
-    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
-  catch /Vim:Interrupt/
-    " Swallow the ^C so that the redraw below happens; otherwise there will be
-    " leftovers from selecta on the screen
-    redraw!
-    return
-  endtry
-  redraw!
-  exec a:vim_command . " " . selection
-endfunction
-
-function! SelectaFile(path)
-  " call SelectaCommand("find " . a:path . "/* -type f", "", ":e")
-  " call SelectaCommand("find " . a:path . "/* -type f -not -path './node_modules/*'", "", ":e")
-  call SelectaCommand("ag -l --nocolor " . a:path , "", ":e")
-endfunction
-
-nmap <C-p> :call SelectaFile(".")<cr>
-nnoremap <leader>f :call SelectaFile(".")<cr>
-nnoremap <leader>gv :call SelectaFile("app/views")<cr>
-nnoremap <leader>gc :call SelectaFile("app/controllers")<cr>
-nnoremap <leader>gm :call SelectaFile("app/models")<cr>
-nnoremap <leader>gh :call SelectaFile("app/helpers")<cr>
-nnoremap <leader>gl :call SelectaFile("lib")<cr>
-nnoremap <leader>gp :call SelectaFile("public")<cr>
-nnoremap <leader>gs :call SelectaFile("public/stylesheets")<cr>
-nnoremap <leader>gf :call SelectaFile("features")<cr>
-
-"Fuzzy select
-function! SelectaIdentifier()
-  " Yank the word under the cursor into the z register
-  normal "zyiw
-  " Fuzzy match files in the current directory, starting with the word under
-  " the cursor
-  call SelectaCommand("find * -type f", "-s " . @z, ":e")
-endfunction
-nnoremap <c-g> :call SelectaIdentifier()<cr>
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " Selecta Mappings
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " Run a given vim command on the results of fuzzy selecting from a given shell
+" " command. See usage below.
+" function! SelectaCommand(choice_command, selecta_args, vim_command)
+"   try
+"     let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+"   catch /Vim:Interrupt/
+"     " Swallow the ^C so that the redraw below happens; otherwise there will be
+"     " leftovers from selecta on the screen
+"     redraw!
+"     return
+"   endtry
+"   redraw!
+"   exec a:vim_command . " " . selection
+" endfunction
+"
+" function! SelectaFile(path)
+"   " call SelectaCommand("find " . a:path . "/* -type f", "", ":e")
+"   " call SelectaCommand("find " . a:path . "/* -type f -not -path './node_modules/*'", "", ":e")
+"   call SelectaCommand("ag -l --nocolor " . a:path , "", ":e")
+" endfunction
+"
+" nmap <C-p> :call SelectaFile(".")<cr>
+" nnoremap <leader>f :call SelectaFile(".")<cr>
+" nnoremap <leader>gv :call SelectaFile("app/views")<cr>
+" nnoremap <leader>gc :call SelectaFile("app/controllers")<cr>
+" nnoremap <leader>gm :call SelectaFile("app/models")<cr>
+" nnoremap <leader>gh :call SelectaFile("app/helpers")<cr>
+" nnoremap <leader>gl :call SelectaFile("lib")<cr>
+" nnoremap <leader>gp :call SelectaFile("public")<cr>
+" nnoremap <leader>gs :call SelectaFile("public/stylesheets")<cr>
+" nnoremap <leader>gf :call SelectaFile("features")<cr>
+"
+" "Fuzzy select
+" function! SelectaIdentifier()
+"   " Yank the word under the cursor into the z register
+"   normal "zyiw
+"   " Fuzzy match files in the current directory, starting with the word under
+"   " the cursor
+"   call SelectaCommand("find * -type f", "-s " . @z, ":e")
+" endfunction
+" nnoremap <c-g> :call SelectaIdentifier()<cr>
 
 
 " quicker tab jumping
@@ -348,3 +353,7 @@ endfunction
 let g:tern_show_argument_hints='on_hold'
 let g:tern_map_keys=1
 let g:tern_map_prefix = '<leader>'
+
+set rtp+=/usr/local/opt/fzf
+" let $FZF_DEFAULT_COMMAND  'ag %s -l --nocolor -g \"\"'
+nnoremap <C-p> :Files<Cr>

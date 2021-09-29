@@ -35,6 +35,9 @@ set visualbell                    " No beeping.
 
 " Mouse in terminal
 set mouse=a
+if has('mouse_sgr')
+  set ttymouse=sgr
+endif
 
 " -----------------------------
 " Backups, Tmp Files, and Undo

@@ -9,7 +9,7 @@ function! vimux#TestCurrentLine()
     call VimuxRunLastCommand()
   else
     " Match
-    let test_string = "rspec " . file . ":" . line(".")
+    let test_string = "bundle exec rspec " . file . ":" . line(".")
     echom test_string
     call VimuxRunCommand(test_string)
   endif
@@ -23,7 +23,7 @@ endfunction
 
 function! vimux#TestFullFile()
   let file = @%
-  let test_string = "rspec " . file
+  let test_string = "bundle exec rspec " . file
   echom test_string
   wall " Write all
   call VimuxRunCommand(test_string)
