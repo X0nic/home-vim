@@ -19,3 +19,4 @@ doc/
 
 # Dont include bundles, just redownload via :BundleInstall
 bundle/
+/home/.vim/plugged

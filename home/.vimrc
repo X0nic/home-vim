@@ -1,4 +1,4 @@
-source ~/.vim/vundle.vim
+source ~/.config/nvim/vundle.vim
 
 "let g:Powerline_symbols = 'fancy'
 
@@ -14,11 +14,12 @@ Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-projectionist'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'ack.vim'
-Bundle 'SirVer/ultisnips'
+if !has('nvim')
+  Bundle 'SirVer/ultisnips'
+endif
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'osyo-manga/vim-over'
-Bundle 'benmills/vimux'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'lambdatoast/elm.vim'
 Plugin 'rust-lang/rust.vim'
@@ -26,10 +27,22 @@ Plugin 'slim-template/vim-slim'
 Plugin 'digitaltoad/vim-pug'
 Plugin 'ternjs/tern_for_vim'
 " Plugin  '/usr/local/opt/fzf'
-Plugin  'junegunn/fzf.vim'
 Plugin 'tomlion/vim-solidity'
 
+call plug#begin('~/.config/nvim/plugged')
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug  'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+" Plug 'sjl/gundo.vim'
+Plug 'simnalamburt/vim-mundo'
+Plug 'preservim/vimux'
+Plug 'morhetz/gruvbox'
+call plug#end()
+
 let g:rustfmt_autosave = 1
+let g:python3_host_prog = '~/.asdf/shims/python'
 
 " vim-scripts repos
 Bundle 'L9'
@@ -43,20 +56,22 @@ Bundle 'L9'
 filetype plugin indent on
 
 " Do the platform specific stuff
-source ~/.vim/platforms.vim
+source ~/.config/nvim/platforms.vim
 
 " Configure basic vim settings, no key mappings
-source ~/.vim/config.vim
+source ~/.config/nvim/config.vim
 
 " Set the vim theme
-source ~/.vim/theme.vim
+source ~/.config/nvim/theme.vim
 
 " Here be the functions
-source ~/.vim/functions.vim
+source ~/.config/nvim/functions.vim
+
+source ~/.config/nvim/coc.vim
 
 " automatically rebalance windows on vim resize
-autocmd VimResized * :wincmd =
-
+" autocmd VimResized * :wincmd =
+"
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
@@ -105,7 +120,7 @@ command! Qall qall
 map Q <Nop>
 
 " Disable K looking stuff up
-map K <Nop>
+" map K <Nop>
 
 " https://github.com/ggreer/the_silver_searcher
 " Bundle 'rking/ag.vim'
@@ -144,19 +159,19 @@ let NERDTreeShowHidden=1
 " Close NERDTree after a file has been opened.
 " let NERDTreeQuitOnOpen=1
 
-Bundle 'scrooloose/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_aggregate_errors = 1
+" Bundle 'scrooloose/syntastic'
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+"
+" let g:syntastic_always_populate_loc_list = 1
+" " let g:syntastic_auto_loc_list = 1
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+" let g:syntastic_javascript_checkers = ['eslint']
+" " let g:syntastic_aggregate_errors = 1
 
 " autocmd bufwritepost *.js silent !standard --fix %
 " set autoread
@@ -165,10 +180,12 @@ Bundle 'matchit.zip'
 runtime macros/matchit.vim
 
 
-Bundle 'airblade/vim-gitgutter'
+" Bundle 'airblade/vim-gitgutter'
 
-Bundle 'Valloric/YouCompleteMe'
-" let g:EclimCompletionMethod = 'omnifunc'
+if !has('nvim')
+  Bundle 'Valloric/YouCompleteMe'
+  " let g:EclimCompletionMethod = 'omnifunc'
+endif
 
 Bundle 'godlygeek/tabular'
 nmap <Leader>t= :Tabularize /=<CR>
@@ -184,8 +201,7 @@ vmap <Leader>t- :Tabularize /-<CR>
 nmap <Leader>t" :Tabularize /"<CR>
 vmap <Leader>t" :Tabularize /"<CR>
 
-Bundle 'sjl/gundo.vim'
-map <leader>u :GundoToggle<cr>
+map <leader>u :MundoToggle<cr>
 
 Bundle 'nginx.vim'
 
@@ -356,4 +372,8 @@ let g:tern_map_prefix = '<leader>'
 
 set rtp+=/usr/local/opt/fzf
 " let $FZF_DEFAULT_COMMAND  'ag %s -l --nocolor -g \"\"'
-nnoremap <C-p> :Files<Cr>
+nnoremap <C-p> :FZF<Cr>
+
+lua <<EOF
+require("treesitter")
+EOF
