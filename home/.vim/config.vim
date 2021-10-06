@@ -5,6 +5,7 @@ let mapleader = ","
 
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
+set cmdheight=2                   " Give more space for displaying messages.
 
 syntax enable
 set autoread                      " Automatically reload changes if detected
@@ -43,13 +44,14 @@ endif
 " Backups, Tmp Files, and Undo
 " -----------------------------
 set nobackup
+set nowritebackup
 set backupdir=~/.vim/.backup
 set directory=~/.vim/.tmp
+
 " Persistent Undo
 set undofile
 set undodir=~/.vim/.undo
 
-" UNCOMMENT TO USE
 set tabstop=2                    " Global tab width.
 set shiftwidth=2                 " And again, related.
 set expandtab                    " Use spaces instead of tabs
