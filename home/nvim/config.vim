@@ -45,12 +45,12 @@ endif
 " -----------------------------
 set nobackup
 set nowritebackup
-set backupdir=~/.vim/.backup
-set directory=~/.vim/.tmp
+set backupdir=~/.config/nvim/.backup
+set directory=~/.config/nvim/.tmp
 
 " Persistent Undo
 set undofile
-set undodir=~/.vim/.undo
+set undodir=~/.config/nvim/.undo
 
 set tabstop=2                    " Global tab width.
 set shiftwidth=2                 " And again, related.
