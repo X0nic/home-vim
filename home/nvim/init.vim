@@ -5,31 +5,20 @@ source ~/.config/nvim/vundle.vim
 " My Bundles here:
 "
 " original repos on github
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-Bundle 'tpope/vim-surround.git'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-projectionist'
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'ack.vim'
 if !has('nvim')
   Bundle 'SirVer/ultisnips'
 endif
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'osyo-manga/vim-over'
-Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'lambdatoast/elm.vim'
-Plugin 'rust-lang/rust.vim'
-Plugin 'slim-template/vim-slim'
-Plugin 'digitaltoad/vim-pug'
-Plugin 'ternjs/tern_for_vim'
-" Plugin  '/usr/local/opt/fzf'
-Plugin 'tomlion/vim-solidity'
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'tpope/vim-fugitive'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-projectionist'
+Plug 'ecomba/vim-ruby-refactoring'
+" Plug 'ack.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug  'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -39,6 +28,20 @@ Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'simnalamburt/vim-mundo'
 Plug 'preservim/vimux'
 Plug 'morhetz/gruvbox'
+Plug 'kchmck/vim-coffee-script'
+Plug 'elixir-lang/vim-elixir'
+Plug 'osyo-manga/vim-over'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'lambdatoast/elm.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'slim-template/vim-slim'
+Plug 'digitaltoad/vim-pug'
+Plug 'ternjs/tern_for_vim'
+" Plugin  '/usr/local/opt/fzf'
+Plug 'tomlion/vim-solidity'
+Plug 'tomtom/tcomment_vim'
+Plug 'scrooloose/nerdtree'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 let g:rustfmt_autosave = 1
@@ -87,8 +90,6 @@ autocmd FileType coffee,css,cucumber,haml,ruby,sass,yaml,thor autocmd BufWritePr
 
 " http://robots.thoughtbot.com/post/48275867281/vim-splits-move-faster-and-more-naturally
 " Easier split navigation with tmux support
-Plugin 'christoomey/vim-tmux-navigator'
-
 let g:tmux_navigator_no_mappings = 1
 
 nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
@@ -145,11 +146,9 @@ endif
 " Bundle 'Shougo/vimproc.vim'
 " Bundle 'unite.vim'
 
-Bundle 'tComment'
 nnoremap // :TComment<CR>j
 vnoremap // :TComment<CR>
 
-Bundle 'scrooloose/nerdtree'
 map <leader>n :NERDTreeToggle<cr>
 map <leader>r :NERDTreeFind<cr>
 
