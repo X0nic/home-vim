@@ -42,6 +42,13 @@ Plug 'tomlion/vim-solidity'
 Plug 'tomtom/tcomment_vim'
 Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'mhinz/vim-signify'
+" Plug 'nvim-lua/lsp-status.nvim'
+" Plug 'datwaft/bubbly.nvim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'adelarsq/vim-devicons-emoji'
+" Plug 'adelarsq/neoline.vim'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 let g:rustfmt_autosave = 1
@@ -126,7 +133,7 @@ map Q <Nop>
 " https://github.com/ggreer/the_silver_searcher
 " Bundle 'rking/ag.vim'
 
-Bundle 'Lokaltog/vim-powerline'
+" Bundle 'Lokaltog/vim-powerline'
 " Bundle 'kien/ctrlp.vim'
 " nmap <C-p> :CtrlP<cr>
 
