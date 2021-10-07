@@ -1,6 +1,4 @@
 {
   "solargraph.promptDownload": true,
-  "solargraph.diagnostics": true,
-  "solargraph.bundlerPath": "~/.asdf/shims/bundler",
-  "solargraph.useBundler": true
+  "solargraph.diagnostics": true
 }
