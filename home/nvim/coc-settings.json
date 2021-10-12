@@ -1,4 +1,14 @@
 {
   "solargraph.promptDownload": true,
-  "solargraph.diagnostics": true
+  "solargraph.diagnostics": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "json",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "graphql"
+  ]
 }

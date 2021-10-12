@@ -77,6 +77,7 @@ source ~/.config/nvim/theme.vim
 " Here be the functions
 source ~/.config/nvim/functions.vim
 
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-git', 'coc-css', 'coc-solargraph', 'coc-lightbulb', 'coc-html', 'coc-eslint', 'coc-stylelint', 'coc-tslint', 'coc-prettier']
 source ~/.config/nvim/coc.vim
 
 " automatically rebalance windows on vim resize
