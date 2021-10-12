@@ -55,7 +55,7 @@ let g:rustfmt_autosave = 1
 let g:python3_host_prog = '~/.asdf/shims/python'
 
 " vim-scripts repos
-Bundle 'L9'
+" Bundle 'L9'
 "Bundle 'FuzzyFinder'
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
@@ -183,16 +183,16 @@ let NERDTreeShowHidden=1
 " autocmd bufwritepost *.js silent !standard --fix %
 " set autoread
 
-Bundle 'matchit.zip'
-runtime macros/matchit.vim
-
-
-" Bundle 'airblade/vim-gitgutter'
-
-if !has('nvim')
-  Bundle 'Valloric/YouCompleteMe'
-  " let g:EclimCompletionMethod = 'omnifunc'
-endif
+" Bundle 'matchit.zip'
+" runtime macros/matchit.vim
+" 
+" 
+" " Bundle 'airblade/vim-gitgutter'
+" 
+" if !has('nvim')
+"   Bundle 'Valloric/YouCompleteMe'
+"   " let g:EclimCompletionMethod = 'omnifunc'
+" endif
 
 Bundle 'godlygeek/tabular'
 nmap <Leader>t= :Tabularize /=<CR>
@@ -210,7 +210,7 @@ vmap <Leader>t" :Tabularize /"<CR>
 
 map <leader>u :MundoToggle<cr>
 
-Bundle 'nginx.vim'
+" Bundle 'nginx.vim'
 
 " Bundle 'rails.vim'
 
