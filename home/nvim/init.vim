@@ -24,13 +24,14 @@ Plug  'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-" Plug 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim'
 Plug 'simnalamburt/vim-mundo'
 Plug 'preservim/vimux'
 Plug 'morhetz/gruvbox'
 Plug 'kchmck/vim-coffee-script'
 Plug 'elixir-lang/vim-elixir'
 Plug 'osyo-manga/vim-over'
+
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'lambdatoast/elm.vim'
 Plug 'rust-lang/rust.vim'
