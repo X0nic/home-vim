@@ -5,9 +5,9 @@ source ~/.config/nvim/vundle.vim
 " My Bundles here:
 "
 " original repos on github
-if !has('nvim')
-  Bundle 'SirVer/ultisnips'
-endif
+" if !has('nvim')
+"   Bundle 'SirVer/ultisnips'
+" endif
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-fugitive'
@@ -24,8 +24,9 @@ Plug  'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-Plug 'sjl/gundo.vim'
-Plug 'simnalamburt/vim-mundo'
+" Plug 'sjl/gundo.vim'
+" Plug 'simnalamburt/vim-mundo'
+Plug 'mbbill/undotree'
 Plug 'preservim/vimux'
 Plug 'morhetz/gruvbox'
 Plug 'kchmck/vim-coffee-script'
@@ -80,6 +81,10 @@ source ~/.config/nvim/functions.vim
 
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-git', 'coc-css', 'coc-solargraph', 'coc-lightbulb', 'coc-html', 'coc-eslint', 'coc-stylelint', 'coc-tslint', 'coc-prettier']
 source ~/.config/nvim/coc.vim
+
+" Enable linux clipboard
+" https://waylonwalker.com/til/ubuntu-terminal-clipboard/
+set clipboard+=unnamedplus
 
 " automatically rebalance windows on vim resize
 " autocmd VimResized * :wincmd =
@@ -209,7 +214,8 @@ vmap <Leader>t- :Tabularize /-<CR>
 nmap <Leader>t" :Tabularize /"<CR>
 vmap <Leader>t" :Tabularize /"<CR>
 
-map <leader>u :MundoToggle<cr>
+" map <leader>u :MundoToggle<cr>
+map <leader>u :UndotreeToggle<cr>
 
 " Bundle 'nginx.vim'
 
