@@ -9,6 +9,8 @@
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "graphql"
-  ]
+    "graphql",
+    "scala"
+  ],
+  "metals.javaHome": "/home/nate/.asdf/installs/java/corretto-11.0.16.9.1"
 }

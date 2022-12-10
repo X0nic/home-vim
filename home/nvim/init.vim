@@ -51,6 +51,11 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'adelarsq/vim-devicons-emoji'
 " Plug 'adelarsq/neoline.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'jvirtanen/vim-hcl'
+
+" Scala
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'scalameta/nvim-metals'
 call plug#end()
 
 let g:rustfmt_autosave = 1
@@ -79,7 +84,7 @@ source ~/.config/nvim/theme.vim
 " Here be the functions
 source ~/.config/nvim/functions.vim
 
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-git', 'coc-css', 'coc-solargraph', 'coc-lightbulb', 'coc-html', 'coc-eslint', 'coc-stylelint', 'coc-tslint', 'coc-prettier']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-git', 'coc-css', 'coc-solargraph', 'coc-lightbulb', 'coc-html', 'coc-eslint', 'coc-stylelint', 'coc-tslint', 'coc-prettier', 'coc-metals']
 source ~/.config/nvim/coc.vim
 
 " Enable linux clipboard
