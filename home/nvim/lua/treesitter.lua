@@ -1,10 +1,15 @@
 require'nvim-treesitter.configs'.setup {
     -- ensure_installed can be "all" or a list of languages { "python", "javascript" }
-    ensure_installed = {"python", "bash", "javascript", "clojure", "go"},
+    -- ensure_installed = {"python", "bash", "javascript", "clojure", "go", "lua"},
+    ensure_installed = "all",
 
-    -- highlight = { -- enable highlighting for all file types
-    --   enable = true, -- you can also use a table with list of langs here (e.g. { "python", "javascript" })
-    -- },
+    highlight = { -- enable highlighting for all file types
+      enable = true, -- you can also use a table with list of langs here (e.g. { "python", "javascript" })
+    },
+    autotag = { enable = true },
+    indent = {
+      enable = true,
+    },
     -- incremental_selection = {
     --   enable = true,  -- you can also use a table with list of langs here (e.g. { "python", "javascript" })
     --   disable = { "cpp", "lua" },
