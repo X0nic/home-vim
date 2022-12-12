@@ -28,7 +28,7 @@ set incsearch                     " Highlight matches as you type.
 set hlsearch                      " Highlight matches.
 
 set nowrap                        " Turn off line wrapping.
-set scrolloff=3                   " Show 3 lines of context around the cursor.
+set scrolloff=10                  " Show 10 lines of context around the cursor.
 
 set title                         " Set the terminal's title
 
@@ -55,6 +55,8 @@ set undodir=~/.config/nvim/.undo
 set tabstop=2                    " Global tab width.
 set shiftwidth=2                 " And again, related.
 set expandtab                    " Use spaces instead of tabs
+set textwidth=120
+set numberwidth=5                " wider gutter
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
