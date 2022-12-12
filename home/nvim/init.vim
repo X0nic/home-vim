@@ -180,9 +180,6 @@ let g:tern_show_argument_hints='on_hold'
 let g:tern_map_keys=1
 let g:tern_map_prefix = '<leader>'
 
-" set rtp+=/usr/local/opt/fzf
-nnoremap <C-p> :FZF<Cr>
-
 lua <<EOF
 require("treesitter")
 
