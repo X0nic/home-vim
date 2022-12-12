@@ -54,7 +54,7 @@ return require("packer").startup({
     -- Plug 'nvim-lua/plenary.nvim'
     -- Plug 'scalameta/nvim-metals'
 
-    use "desert-warm-256"
+    -- use "desert-warm-256"
     -- use "croaky/vim-colors-github"
     use "godlygeek/tabular"
   end
