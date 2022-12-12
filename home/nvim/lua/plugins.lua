@@ -9,11 +9,15 @@ return require("packer").startup({
     use "tpope/vim-rake"
     use "tpope/vim-projectionist"
     use "ecomba/vim-ruby-refactoring"
-    -- use "junegunn/fzf", { 'do': { -> fzf#install() } }
-    use  "junegunn/fzf.vim"
     -- use "neoclide/coc.nvim", {'branch': 'release'}
-    -- use "nvim-treesitter/nvim-treesitter", {'do': ':TSUpdate'}
-    -- use "nvim-treesitter/nvim-treesitter-textobjects"
+
+    -- Fuzzy finding
+    use({
+      "nvim-telescope/telescope.nvim",
+      requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+    })
+    use { "junegunn/fzf", run = vim.fn['fzf#install()']  }
+
     use "mbbill/undotree"
     use "preservim/vimux"
     use "morhetz/gruvbox"
