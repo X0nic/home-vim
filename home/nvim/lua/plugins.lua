@@ -18,6 +18,15 @@ return require("packer").startup({
     })
     use { "junegunn/fzf", run = vim.fn['fzf#install()']  }
 
+
+    -- Treesitter
+    -- use "nvim-treesitter/nvim-treesitter", {'do': ':TSUpdate'}
+    use({
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
+    })
+    use "nvim-treesitter/nvim-treesitter-textobjects"
+
     use "mbbill/undotree"
     use "preservim/vimux"
     use "morhetz/gruvbox"
