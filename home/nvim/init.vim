@@ -72,9 +72,6 @@ let g:python3_host_prog = '~/.asdf/shims/python'
 " Automatically detect file types. (must turn on after Vundle)
 filetype plugin indent on
 
-" Do the platform specific stuff
-source ~/.config/nvim/platforms.vim
-
 " Configure basic vim settings, no key mappings
 source ~/.config/nvim/config.vim
 
