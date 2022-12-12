@@ -185,4 +185,7 @@ nnoremap <C-p> :FZF<Cr>
 
 lua <<EOF
 require("treesitter")
+
+-- keymappings
+require("keymappings")
 EOF
