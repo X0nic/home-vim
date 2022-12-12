@@ -1,46 +1,6 @@
-source ~/.config/nvim/vundle.vim
-
-call plug#begin('~/.config/nvim/plugged')
-Plug 'tpope/vim-fugitive'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-projectionist'
-Plug 'ecomba/vim-ruby-refactoring'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug  'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-Plug 'mbbill/undotree'
-Plug 'preservim/vimux'
-Plug 'morhetz/gruvbox'
-Plug 'kchmck/vim-coffee-script'
-Plug 'elixir-lang/vim-elixir'
-Plug 'osyo-manga/vim-over'
-
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'lambdatoast/elm.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'slim-template/vim-slim'
-Plug 'digitaltoad/vim-pug'
-Plug 'ternjs/tern_for_vim'
-Plug 'tomlion/vim-solidity'
-Plug 'tomtom/tcomment_vim'
-Plug 'scrooloose/nerdtree'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'mhinz/vim-signify'
-Plug 'ryanoasis/vim-devicons'
-Plug 'adelarsq/vim-devicons-emoji'
-Plug 'vim-airline/vim-airline'
-Plug 'jvirtanen/vim-hcl'
-
-" Scala
-" Plug 'nvim-lua/plenary.nvim'
-" Plug 'scalameta/nvim-metals'
-call plug#end()
+lua << EOF
+require "plugins"
+EOF
 
 let g:rustfmt_autosave = 1
 let g:python3_host_prog = '~/.asdf/shims/python'
@@ -119,7 +79,7 @@ map <leader>r :NERDTreeFind<cr>
 " For NERDTree to be able to show hidden files.
 let NERDTreeShowHidden=1
 
-Bundle 'godlygeek/tabular'
+" Bundle 'godlygeek/tabular'
 nmap <Leader>t= :Tabularize /=<CR>
 vmap <Leader>t= :Tabularize /=<CR>
 nmap <Leader>t: :Tabularize /:\zs<CR>
