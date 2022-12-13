@@ -2,9 +2,9 @@ require("packer").startup(function(use)
     use({"wbthomason/packer.nvim"})
 
     -- lsp
-    use("neovim/nvim-lspconfig")
     use { "williamboman/mason.nvim" }
     use { "williamboman/mason-lspconfig.nvim" }
+    use("neovim/nvim-lspconfig")
     use { "jose-elias-alvarez/null-ls.nvim" } -- for formatters and linters
     use { "RRethy/vim-illuminate" }
 
@@ -23,6 +23,33 @@ require("packer").startup(function(use)
       run = ":TSUpdate",
     })
     use "nvim-treesitter/nvim-treesitter-textobjects"
+
+    -- Autocomplete
+    use({
+      "hrsh7th/nvim-cmp",
+      requires = {
+        "hrsh7th/cmp-cmdline", -- command line
+        "hrsh7th/cmp-buffer", -- buffer completions
+        "hrsh7th/cmp-nvim-lua", -- nvim config completions
+        "hrsh7th/cmp-nvim-lsp", -- lsp completions
+        "hrsh7th/cmp-path", -- file path completions
+        "saadparwaiz1/cmp_luasnip", -- snippets completions
+      },
+    })
+
+    -- snippets
+    use({
+      "L3MON4D3/LuaSnip",
+      requires = {
+        "rafamadriz/friendly-snippets",
+      },
+    })
+
+    -- icons
+    use("kyazdani42/nvim-web-devicons")
+
+    -- icons in completion
+    use("onsails/lspkind-nvim")
 
     use "tpope/vim-fugitive"
     use "Lokaltog/vim-easymotion"

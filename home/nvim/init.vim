@@ -1,5 +1,10 @@
 lua << EOF
 require "plugins"
+
+-- set up language servers
+require("lsp")
+
+require("cmp-settings")
 EOF
 
 let g:rustfmt_autosave = 1
