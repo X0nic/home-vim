@@ -1,7 +1,7 @@
 require'lspconfig'.solargraph.setup{
-  flags = {
-    debounce_text_changes = 150,
-  },
+  -- flags = {
+  --   debounce_text_changes = 150,
+  -- },
   settings = {
     solargraph = {
       diagnostics = false,

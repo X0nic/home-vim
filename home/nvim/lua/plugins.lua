@@ -16,6 +16,9 @@ require("packer").startup(function(use)
     use { "junegunn/fzf", run = vim.fn['fzf#install()']  }
 
 
+    -- CoC
+    use { "neoclide/coc.nvim", branch = 'release'}
+
     -- Treesitter
     -- use "nvim-treesitter/nvim-treesitter", {'do': ':TSUpdate'}
     use({
@@ -24,32 +27,32 @@ require("packer").startup(function(use)
     })
     use "nvim-treesitter/nvim-treesitter-textobjects"
 
-    -- Autocomplete
-    use({
-      "hrsh7th/nvim-cmp",
-      requires = {
-        "hrsh7th/cmp-cmdline", -- command line
-        "hrsh7th/cmp-buffer", -- buffer completions
-        "hrsh7th/cmp-nvim-lua", -- nvim config completions
-        "hrsh7th/cmp-nvim-lsp", -- lsp completions
-        "hrsh7th/cmp-path", -- file path completions
-        "saadparwaiz1/cmp_luasnip", -- snippets completions
-      },
-    })
-
-    -- snippets
-    use({
-      "L3MON4D3/LuaSnip",
-      requires = {
-        "rafamadriz/friendly-snippets",
-      },
-    })
-
-    -- icons
-    use("kyazdani42/nvim-web-devicons")
-
-    -- icons in completion
-    use("onsails/lspkind-nvim")
+    -- -- Autocomplete
+    -- use({
+    --   "hrsh7th/nvim-cmp",
+    --   requires = {
+    --     "hrsh7th/cmp-cmdline", -- command line
+    --     "hrsh7th/cmp-buffer", -- buffer completions
+    --     "hrsh7th/cmp-nvim-lua", -- nvim config completions
+    --     "hrsh7th/cmp-nvim-lsp", -- lsp completions
+    --     "hrsh7th/cmp-path", -- file path completions
+    --     "saadparwaiz1/cmp_luasnip", -- snippets completions
+    --   },
+    -- })
+    --
+    -- -- snippets
+    -- use({
+    --   "L3MON4D3/LuaSnip",
+    --   requires = {
+    --     "rafamadriz/friendly-snippets",
+    --   },
+    -- })
+    --
+    -- -- icons
+    -- use("kyazdani42/nvim-web-devicons")
+    --
+    -- -- icons in completion
+    -- use("onsails/lspkind-nvim")
 
     use "tpope/vim-fugitive"
     use "Lokaltog/vim-easymotion"
@@ -59,7 +62,6 @@ require("packer").startup(function(use)
     use "tpope/vim-rake"
     use "tpope/vim-projectionist"
     use "ecomba/vim-ruby-refactoring"
-    -- use "neoclide/coc.nvim", {'branch': 'release'}
 
     use "mbbill/undotree"
     use "preservim/vimux"
