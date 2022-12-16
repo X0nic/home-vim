@@ -53,6 +53,8 @@ require("packer").startup(function(use)
     --
     -- -- icons in completion
     -- use("onsails/lspkind-nvim")
+  
+    use { "akinsho/bufferline.nvim", requires = 'nvim-tree/nvim-web-devicons' }
 
     use "tpope/vim-fugitive"
     use "Lokaltog/vim-easymotion"

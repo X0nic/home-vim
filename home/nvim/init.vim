@@ -6,6 +6,8 @@ require "plugins"
 -- require("lsp")
 
 -- require("cmp-settings")
+
+require "bufferline-settings"
 EOF
 
 let g:rustfmt_autosave = 1
