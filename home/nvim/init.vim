@@ -152,21 +152,6 @@ silent! nmap <silent> <Leader>sr :RubocopCurrentFile<CR>
 command! StopSpring call vimux#StopSpring()
 silent! nmap <silent> <Leader>ss :StopSpring<CR>
 
-" quicker tab jumping
-map <leader>1 1gt
-map <leader>2 2gt
-map <leader>3 3gt
-map <leader>4 4gt
-map <leader>5 5gt
-map <leader>6 6gt
-map <leader>7 7gt
-map <leader>8 8gt
-map <leader>9 9gt
-map <leader>0 :tablast<CR>
-
-" Quick new tab
-map <leader>tn :tabe %<cr>
-
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
 

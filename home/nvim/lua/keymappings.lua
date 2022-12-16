@@ -14,3 +14,18 @@ keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", opts)
+
+-- quicker tab jumping
+keymap("", "<leader>1", "1gt")
+keymap("", "<leader>2", "2gt")
+keymap("", "<leader>3", "3gt")
+keymap("", "<leader>4", "4gt")
+keymap("", "<leader>5", "5gt")
+keymap("", "<leader>6", "6gt")
+keymap("", "<leader>7", "7gt")
+keymap("", "<leader>8", "8gt")
+keymap("", "<leader>9", "9gt")
+keymap("", "<leader>0", ":tablast<CR>")
+
+-- Quick new tab
+keymap("", "<leader>tn", ":tabe %<cr>")
