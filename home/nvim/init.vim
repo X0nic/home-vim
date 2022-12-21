@@ -10,6 +10,8 @@ require("lsp")
 require "telescope-settings"
 
 require "bufferline-settings"
+
+require "theme"
 EOF
 
 let g:rustfmt_autosave = 1
@@ -23,7 +25,7 @@ filetype plugin indent on
 source ~/.config/nvim/config.vim
 
 " Set the vim theme
-source ~/.config/nvim/theme.vim
+" source ~/.config/nvim/theme.vim
 
 " Here be the functions
 source ~/.config/nvim/functions.vim
