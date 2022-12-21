@@ -1,5 +1,8 @@
 vim.cmd("colorscheme nightfox")
 
+require('lualine').setup()
+
+
 -- " Bundle 'desert-warm-256'
 -- " Bundle 'croaky/vim-colors-github'
 -- " colorscheme desert-warm-256

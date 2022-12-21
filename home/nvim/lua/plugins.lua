@@ -94,6 +94,11 @@ require("packer").startup(function(use)
 
   use { "akinsho/bufferline.nvim", requires = 'nvim-tree/nvim-web-devicons' }
 
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+
   use "tpope/vim-fugitive"
   use "Lokaltog/vim-easymotion"
   -- use "rstacruz/sparkup", {'rtp': 'vim/'}
@@ -123,7 +128,6 @@ require("packer").startup(function(use)
   use "mhinz/vim-signify"
   use "ryanoasis/vim-devicons"
   use "adelarsq/vim-devicons-emoji"
-  use "vim-airline/vim-airline"
   use "jvirtanen/vim-hcl"
 
   -- Scala
