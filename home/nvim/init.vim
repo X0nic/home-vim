@@ -7,6 +7,8 @@ require("lsp")
 
 -- require("cmp-settings")
 
+require "telescope-settings"
+
 require "bufferline-settings"
 EOF
 
