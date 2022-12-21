@@ -1,11 +1,16 @@
-require'lspconfig'.solargraph.setup{
-  -- flags = {
-  --   debounce_text_changes = 150,
-  -- },
-  settings = {
-    solargraph = {
-      diagnostics = false,
-    },
-  }
-}
+-- require'lspconfig'.solargraph.setup{
+--   -- flags = {
+--   --   debounce_text_changes = 150,
+--   -- },
+--   settings = {
+--     solargraph = {
+--       diagnostics = false,
+--     },
+--   },
+--   init_options = {
+--     formatting = true
+--   }
+-- }
+-- require'lspconfig'.ruby_ls.setup{}
+
 -- require'lspconfig'.ruby_ls.setup{}

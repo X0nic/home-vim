@@ -3,11 +3,15 @@ require "plugins"
 
 -- Disable LSP for now 2022-12-13. It could possible work, but needs more work on the config side to work as well as CoC.
 -- set up language servers
--- require("lsp")
+require("lsp")
 
 -- require("cmp-settings")
 
+require "telescope-settings"
+
 require "bufferline-settings"
+
+require "theme"
 EOF
 
 let g:rustfmt_autosave = 1
@@ -21,13 +25,13 @@ filetype plugin indent on
 source ~/.config/nvim/config.vim
 
 " Set the vim theme
-source ~/.config/nvim/theme.vim
+" source ~/.config/nvim/theme.vim
 
 " Here be the functions
 source ~/.config/nvim/functions.vim
 
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-git', 'coc-css', 'coc-solargraph', 'coc-lightbulb', 'coc-html', 'coc-eslint', 'coc-stylelint', 'coc-tslint', 'coc-prettier', 'coc-metals']
-source ~/.config/nvim/coc.vim
+" let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-git', 'coc-css', 'coc-solargraph', 'coc-lightbulb', 'coc-html', 'coc-eslint', 'coc-stylelint', 'coc-tslint', 'coc-prettier', 'coc-metals']
+" source ~/.config/nvim/coc.vim
 
 " Enable linux clipboard
 " https://waylonwalker.com/til/ubuntu-terminal-clipboard/

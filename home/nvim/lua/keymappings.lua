@@ -1,5 +1,6 @@
 -- Shorten function name
 local keymap = vim.keymap.set
+local opts = {}
 
 -- Plugins --
 
@@ -13,7 +14,9 @@ keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
-keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", opts)
+keymap("n", "<leader>fq", ":Telescope quickfix<CR>", opts)
+-- keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", opts)
+keymap("n", "<leader>fr", "<Cmd>lua require('telescope').extensions.frecency.frecency({ workspace = 'CWD' })<CR>", {noremap = true, silent = true})
 
 -- quicker tab jumping
 keymap("", "<leader>1", "1gt")

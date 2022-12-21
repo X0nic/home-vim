@@ -1,36 +1,74 @@
-require "lsp.mason"
+local lsp = require('lsp-zero')
+lsp.preset('recommended')
 
--- require all language server modules
-require("lsp.ruby")
-require("lsp.typescript")
-require("lsp.eslint")
--- require("lsp.vue")
--- require("lsp.css")
--- require("lsp.html")
--- require("lsp.luals")
--- require("lsp.python")
--- require("lsp.json")
--- require("lsp.tailwind")
--- require("lsp.yaml")
--- require("lsp.prisma")
--- require("lsp.emmet")
--- require("lsp.gql")
--- require("lsp.rust")
--- require("lsp.go")
--- require("lsp.deno")
--- require("lsp.astro")
+lsp.configure('solargraph', {
+  settings = {
+    solargraph = {
+      diagnostics = false,
+    },
+  },
+  init_options = {
+    formatting = false
+  }
+})
 
+lsp.configure('sumneko_lua', {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      },
+    },
+  },
+})
+
+lsp.setup()
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = false,
+  float = true,
+})
+
+-- require("lsp.ruby")
 require "lsp.null-ls"
 
--- Customization and appearance -----------------------------------------
--- change gutter diagnostic symbols
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
+-- require "lsp.mason"
+--
+-- -- require all language server modules
+-- require("lsp.ruby")
+-- require("lsp.typescript")
+-- require("lsp.eslint")
+-- -- require("lsp.vue")
+-- -- require("lsp.css")
+-- -- require("lsp.html")
+-- -- require("lsp.luals")
+-- -- require("lsp.python")
+-- -- require("lsp.json")
+-- -- require("lsp.tailwind")
+-- -- require("lsp.yaml")
+-- -- require("lsp.prisma")
+-- -- require("lsp.emmet")
+-- -- require("lsp.gql")
+-- -- require("lsp.rust")
+-- -- require("lsp.go")
+-- -- require("lsp.deno")
+-- -- require("lsp.astro")
+--
+-- require "lsp.null-ls"
+--
+-- -- Customization and appearance -----------------------------------------
+-- -- change gutter diagnostic symbols
+-- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+--
+-- for type, icon in pairs(signs) do
+--   local hl = "DiagnosticSign" .. type
+--   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+-- end
+--
 vim.diagnostic.config({
   virtual_text = {
     source = "if_many",
@@ -41,14 +79,14 @@ vim.diagnostic.config({
   },
   severity_sort = true,
 })
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "rounded",
-})
+--
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+--   border = "rounded",
+-- })
+--
+-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+--   border = "rounded",
+-- })
 
 -- -- Mappings.
 -- -- See `:help vim.diagnostic.*` for documentation on any of the below functions
