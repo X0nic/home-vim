@@ -1,17 +1,5 @@
 lua << EOF
 require "plugins"
-
--- Disable LSP for now 2022-12-13. It could possible work, but needs more work on the config side to work as well as CoC.
--- set up language servers
-require("lsp")
-
--- require("cmp-settings")
-
-require "telescope-settings"
-
-require "bufferline-settings"
-
-require "theme"
 EOF
 
 let g:rustfmt_autosave = 1
@@ -178,6 +166,18 @@ let g:tern_map_keys=1
 let g:tern_map_prefix = '<leader>'
 
 lua <<EOF
+-- set up language servers
+require("lsp")
+
+-- require("cmp-settings")
+
+require "telescope-settings"
+
+-- require "bufferline-settings"
+require "lualine-settings"
+
+require "theme"
+
 require("treesitter")
 
 -- keymappings
