@@ -73,12 +73,6 @@ endif
 nnoremap // :TComment<CR>j
 vnoremap // :TComment<CR>
 
-map <leader>n :NERDTreeToggle<cr>
-map <leader>r :NERDTreeFind<cr>
-
-" For NERDTree to be able to show hidden files.
-let NERDTreeShowHidden=1
-
 " Bundle 'godlygeek/tabular'
 nmap <Leader>t= :Tabularize /=<CR>
 vmap <Leader>t= :Tabularize /=<CR>
@@ -179,6 +173,8 @@ require "lualine-settings"
 require "theme"
 
 require("treesitter")
+
+require("tree-settings")
 
 -- keymappings
 require("keymappings")

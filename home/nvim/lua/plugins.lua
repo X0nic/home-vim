@@ -108,6 +108,14 @@ require("packer").startup(function(use)
     end,
   })
 
+  -- use "scrooloose/nerdtree"
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    }
+  }
+
   use "tpope/vim-fugitive"
   use "Lokaltog/vim-easymotion"
   -- use "rstacruz/sparkup", {'rtp': 'vim/'}
@@ -132,7 +140,6 @@ require("packer").startup(function(use)
   use "ternjs/tern_for_vim"
   use "tomlion/vim-solidity"
   use "tomtom/tcomment_vim"
-  use "scrooloose/nerdtree"
   use "christoomey/vim-tmux-navigator"
   use "mhinz/vim-signify"
   use "ryanoasis/vim-devicons"

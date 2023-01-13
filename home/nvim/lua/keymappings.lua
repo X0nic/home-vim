@@ -24,8 +24,10 @@ keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", opts)
 keymap("n", "<leader>fm", "<Cmd>lua require('telescope').extensions.metals.commands()<CR>")
 
 
-keymap("", "<leader>n", ":NERDTreeToggle<cr>")
-keymap("", "<leader>r", ":NERDTreeFind<cr>")
+-- keymap("", "<leader>n", ":NERDTreeToggle<cr>")
+-- keymap("", "<leader>r", ":NERDTreeFind<cr>")
+keymap("", "<leader>n", ":NvimTreeToggle<cr>")
+keymap("", "<leader>r", ":NvimTreeFindFile<cr>")
 
 -- quicker tab jumping
 keymap("", "<leader>1", "1gt")
