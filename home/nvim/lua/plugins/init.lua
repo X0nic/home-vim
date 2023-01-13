@@ -1,13 +1,11 @@
-require("packer").startup(function(use)
-  use({"wbthomason/packer.nvim"})
-
+return {
   -- theme
-  use "EdenEast/nightfox.nvim"
+  { "EdenEast/nightfox.nvim" },
 
   -- lsp
-  use {
+  {
     'VonHeikemen/lsp-zero.nvim',
-    requires = {
+    dependencies = {
       -- LSP Support
       {'neovim/nvim-lspconfig'},
       {'williamboman/mason.nvim'},
@@ -31,28 +29,36 @@ require("packer").startup(function(use)
       {'L3MON4D3/LuaSnip'},
       {'rafamadriz/friendly-snippets'},
     }
-  }
+  },
+
   -- use { "williamboman/mason.nvim" }
   -- use { "williamboman/mason-lspconfig.nvim" }
   -- use("neovim/nvim-lspconfig")
-  use { "jose-elias-alvarez/null-ls.nvim" } -- for formatters and linters
+  { "jose-elias-alvarez/null-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } }, -- for formatters and linters
+  { "RRethy/vim-illuminate" },
 
-  use { "RRethy/vim-illuminate" }
+  -- tree
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    }
+  },
 
   -- Fuzzy finding
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use({
+  {'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  {
     "nvim-telescope/telescope.nvim",
-    requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-  })
-  use { "junegunn/fzf", run = vim.fn['fzf#install()']  }
-  use {
+    dependencies = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+  },
+  { "junegunn/fzf", run = vim.fn['fzf#install()']  },
+  {
     "nvim-telescope/telescope-frecency.nvim",
     config = function()
       require"telescope".load_extension("frecency")
     end,
-    requires = {"kkharji/sqlite.lua"}
-  }
+    dependencies = {"kkharji/sqlite.lua"}
+  },
 
 
   -- CoC
@@ -60,11 +66,12 @@ require("packer").startup(function(use)
 
   -- Treesitter
   -- use "nvim-treesitter/nvim-treesitter", {'do': ':TSUpdate'}
-  use({
+  {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  })
-  use "nvim-treesitter/nvim-treesitter-textobjects"
+    build = ":TSUpdate",
+  },
+  { "nvim-treesitter/nvim-treesitter-textobjects" },
+
 
   -- -- Autocomplete
   -- use({
@@ -95,75 +102,59 @@ require("packer").startup(function(use)
 
   -- use { "akinsho/bufferline.nvim", requires = 'nvim-tree/nvim-web-devicons' }
 
-  use {
+  {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
+    dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
+  },
 
-  use({
+  {
     "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
     config = function()
       require("trouble").setup({})
     end,
-  })
+  },
 
-  -- use "scrooloose/nerdtree"
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons', -- optional, for file icons
-    }
-  }
-
-  use "tpope/vim-fugitive"
-  use "Lokaltog/vim-easymotion"
+  { "tpope/vim-fugitive" },
+  { "Lokaltog/vim-easymotion" },
   -- use "rstacruz/sparkup", {'rtp': 'vim/'}
-  use "tpope/vim-rails"
-  use "tpope/vim-surround"
-  use "tpope/vim-rake"
-  use "tpope/vim-projectionist"
-  use "ecomba/vim-ruby-refactoring"
+  { "tpope/vim-rails" },
+  { "tpope/vim-surround" },
+  { "tpope/vim-rake" },
+  { "tpope/vim-projectionist" },
+  { "ecomba/vim-ruby-refactoring" },
 
-  use "mbbill/undotree"
-  use "preservim/vimux"
-  use "morhetz/gruvbox"
-  use "kchmck/vim-coffee-script"
+  { "mbbill/undotree" },
+  { "preservim/vimux" },
+  { "morhetz/gruvbox" },
+  { "kchmck/vim-coffee-script" },
   -- use "elixir-lang/vim-elixir"
   -- use "osyo-manga/vim-over"
 
-  use "mustache/vim-mustache-handlebars"
-  use "lambdatoast/elm.vim"
-  use "rust-lang/rust.vim"
-  use "slim-template/vim-slim"
-  use "digitaltoad/vim-pug"
-  use "ternjs/tern_for_vim"
-  use "tomlion/vim-solidity"
-  use "tomtom/tcomment_vim"
-  use "christoomey/vim-tmux-navigator"
-  use "mhinz/vim-signify"
-  use "ryanoasis/vim-devicons"
-  use "adelarsq/vim-devicons-emoji"
-  use "jvirtanen/vim-hcl"
+  { "mustache/vim-mustache-handlebars" },
+  { "lambdatoast/elm.vim" },
+  { "rust-lang/rust.vim" },
+  { "slim-template/vim-slim" },
+  { "digitaltoad/vim-pug" },
+  { "ternjs/tern_for_vim" },
+  { "tomlion/vim-solidity" },
+  { "tomtom/tcomment_vim" },
+  { "christoomey/vim-tmux-navigator" },
+  { "mhinz/vim-signify" },
+  -- { "ryanoasis/vim-devicons" },
+  -- { "adelarsq/vim-devicons-emoji" },
+  { "jvirtanen/vim-hcl" },
 
   -- Scala
-  use({
+  {
     "scalameta/nvim-metals",
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "mfussenegger/nvim-dap",
     },
-  })
+  },
 
   -- use "desert-warm-256"
   -- use "croaky/vim-colors-github"
-  use "godlygeek/tabular"
-end)
-
--- Reload plugins file when saved
-vim.cmd([[
-  augroup packer_user_config
-  autocmd!
-  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
+  { "godlygeek/tabular" },
+}

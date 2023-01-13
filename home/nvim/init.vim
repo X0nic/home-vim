@@ -1,7 +1,3 @@
-lua << EOF
-require "plugins"
-EOF
-
 let g:rustfmt_autosave = 1
 let g:python3_host_prog = '~/.asdf/shims/python'
 
@@ -11,6 +7,25 @@ filetype plugin indent on
 
 " Configure basic vim settings, no key mappings
 source ~/.config/nvim/config.vim
+
+lua << EOF
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup("plugins")
+
+-- require("plugins_old")
+EOF
 
 " Set the vim theme
 " source ~/.config/nvim/theme.vim
