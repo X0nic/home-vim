@@ -36,6 +36,7 @@ require("packer").startup(function(use)
   -- use { "williamboman/mason-lspconfig.nvim" }
   -- use("neovim/nvim-lspconfig")
   use { "jose-elias-alvarez/null-ls.nvim" } -- for formatters and linters
+
   use { "RRethy/vim-illuminate" }
 
   -- Fuzzy finding
@@ -139,8 +140,13 @@ require("packer").startup(function(use)
   use "jvirtanen/vim-hcl"
 
   -- Scala
-  -- Plug 'nvim-lua/plenary.nvim'
-  -- Plug 'scalameta/nvim-metals'
+  use({
+    "scalameta/nvim-metals",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "mfussenegger/nvim-dap",
+    },
+  })
 
   -- use "desert-warm-256"
   -- use "croaky/vim-colors-github"

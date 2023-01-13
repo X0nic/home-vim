@@ -17,6 +17,7 @@ null_ls.setup {
     formatting.stylua,
     formatting.google_java_format,
     formatting.rubocop,
+    formatting.scalafmt,
     diagnostics.flake8,
     diagnostics.rubocop,
   },

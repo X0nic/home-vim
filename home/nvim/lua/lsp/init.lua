@@ -35,6 +35,7 @@ vim.diagnostic.config({
 
 -- require("lsp.ruby")
 require "lsp.null-ls"
+require "lsp.metals"
 
 -- require "lsp.mason"
 --
