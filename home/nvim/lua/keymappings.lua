@@ -17,8 +17,12 @@ keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fq", ":Telescope quickfix<CR>", opts)
--- keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", opts)
-keymap("n", "<leader>fr", "<Cmd>lua require('telescope').extensions.frecency.frecency({ workspace = 'CWD' })<CR>", {noremap = true, silent = true})
+keymap("n", "<leader>fd", ":Telescope diagnostics<CR>", opts)
+keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", opts)
+-- keymap("n", "<leader>fr", "<Cmd>lua require('telescope').extensions.frecency.frecency({ workspace = 'CWD' })<CR>", {noremap = true, silent = true})
+-- keymap("n", "<C-p>", "<Cmd>lua require('telescope').extensions.frecency.frecency({ workspace = 'CWD' })<CR>", {noremap = true, silent = true})
+keymap("n", "<leader>fm", "<Cmd>lua require('telescope').extensions.metals.commands()<CR>")
+
 
 -- quicker tab jumping
 keymap("", "<leader>1", "1gt")
