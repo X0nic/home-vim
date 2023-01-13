@@ -1,7 +1,4 @@
 return {
-  -- theme
-  { "EdenEast/nightfox.nvim" },
-
   -- lsp
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -66,11 +63,11 @@ return {
 
   -- Treesitter
   -- use "nvim-treesitter/nvim-treesitter", {'do': ':TSUpdate'}
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-  },
-  { "nvim-treesitter/nvim-treesitter-textobjects" },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   build = ":TSUpdate",
+  -- },
+  -- { "nvim-treesitter/nvim-treesitter-textobjects" },
 
 
   -- -- Autocomplete
@@ -106,6 +103,11 @@ return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
   },
+  {
+    "SmiteshP/nvim-navic",
+    opts = { separator = " ", highlight = true, depth_limit = 5 },
+    dependencies = "neovim/nvim-lspconfig",
+  },
 
   {
     "folke/trouble.nvim",
@@ -113,6 +115,14 @@ return {
     config = function()
       require("trouble").setup({})
     end,
+  },
+
+  -- git
+  {
+  'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
   },
 
   { "tpope/vim-fugitive" },
@@ -140,7 +150,7 @@ return {
   { "tomlion/vim-solidity" },
   { "tomtom/tcomment_vim" },
   { "christoomey/vim-tmux-navigator" },
-  { "mhinz/vim-signify" },
+  -- { "mhinz/vim-signify" },
   -- { "ryanoasis/vim-devicons" },
   -- { "adelarsq/vim-devicons-emoji" },
   { "jvirtanen/vim-hcl" },

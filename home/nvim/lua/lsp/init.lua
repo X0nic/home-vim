@@ -22,6 +22,13 @@ lsp.configure('sumneko_lua', {
   },
 })
 
+local navic = require("nvim-navic")
+lsp.on_attach(function(client, bufnr)
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
+end)
+
 lsp.setup()
 
 vim.diagnostic.config({

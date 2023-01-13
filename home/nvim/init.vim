@@ -187,7 +187,7 @@ require "lualine-settings"
 
 require "theme"
 
-require("treesitter")
+-- require("treesitter")
 
 require("tree-settings")
 

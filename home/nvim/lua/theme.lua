@@ -1,4 +1,5 @@
 vim.cmd("colorscheme nightfox")
+-- vim.cmd("colorscheme tokyonight")
 
 
 -- " Bundle 'desert-warm-256'
