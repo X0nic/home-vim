@@ -48,7 +48,7 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
   },
-  { "junegunn/fzf", run = vim.fn['fzf#install()']  },
+  { "junegunn/fzf", build = vim.fn['fzf#install()']  },
   {
     "nvim-telescope/telescope-frecency.nvim",
     config = function()

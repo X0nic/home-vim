@@ -124,15 +124,6 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-
-" ---------------
-" UltiSnips
-" ---------------
-let g:UltiSnipsSnippetDirectories=["MyUltiSnips"]
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
 " Replace insert pry breakpoint in insert mode
 imap !!p require 'pry' ; binding.pry
 imap !!P require 'pry' ; binding.pry
