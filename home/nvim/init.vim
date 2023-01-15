@@ -162,7 +162,7 @@ require "theme"
 
 -- require("treesitter")
 
-require("tree-settings")
+-- require("tree-settings")
 
 -- keymappings
 require("keymappings")

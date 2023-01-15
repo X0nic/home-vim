@@ -24,8 +24,9 @@ keymap("n", "<leader>fm", "<Cmd>lua require('telescope').extensions.metals.comma
 
 -- keymap("", "<leader>n", ":NERDTreeToggle<cr>")
 -- keymap("", "<leader>r", ":NERDTreeFind<cr>")
-keymap("", "<leader>n", ":NvimTreeToggle<cr>")
-keymap("", "<leader>r", ":NvimTreeFindFile<cr>")
+-- keymap("", "<leader>n", ":NvimTreeToggle<cr>")
+-- keymap("", "<leader>r", ":NvimTreeFindFile<cr>")
+-- Mapped to NeoTree in plugins/tree
 
 -- quicker tab jumping
 keymap("", "<leader>1", "1gt")
