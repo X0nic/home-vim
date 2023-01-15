@@ -104,11 +104,11 @@ map <leader>u :UndotreeToggle<cr>
 
 nnoremap <C-n> :call NumberToggle()<cr>
 
-:au FocusLost * :set number
-:au FocusGained * :set relativenumber
+" :au FocusLost * :set number
+" :au FocusGained * :set relativenumber
 
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
+" autocmd InsertEnter * :set number
+" autocmd InsertLeave * :set relativenumber
 
 " Cursor settings. This makes terminal vim sooo much nicer!
 " Tmux will only forward escape sequences to the terminal if surrounded by a DCS
