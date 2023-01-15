@@ -101,12 +101,16 @@ return {
 
   -- use { "akinsho/bufferline.nvim", requires = 'nvim-tree/nvim-web-devicons' }
 
+  -- better diagnostics list and others
   {
     "folke/trouble.nvim",
+    cmd = { "TroubleToggle", "Trouble" },
     dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
-    config = function()
-      require("trouble").setup({})
-    end,
+    opts = { use_diagnostic_signs = true },
+    keys = {
+      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+      { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
+    },
   },
 
   -- git
@@ -148,6 +152,39 @@ return {
       },
     },
   },
+
+  -- which-key
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      plugins = { spelling = true },
+      key_labels = { ["<leader>"] = "SPC" },
+    },
+    config = function(_, opts)
+      local wk = require("which-key")
+      wk.setup(opts)
+      wk.register({
+        mode = { "n", "v" },
+        ["g"] = { name = "+goto" },
+        ["]"] = { name = "+next" },
+        ["["] = { name = "+prev" },
+        ["<leader><tab>"] = { name = "+tabs" },
+        ["<leader>b"] = { name = "+buffer" },
+        ["<leader>c"] = { name = "+code" },
+        ["<leader>f"] = { name = "+file/find" },
+        ["<leader>g"] = { name = "+git" },
+        ["<leader>gh"] = { name = "+hunks" },
+        ["<leader>q"] = { name = "+quit/session" },
+        ["<leader>s"] = { name = "+search" },
+        ["<leader>sn"] = { name = "+noice" },
+        ["<leader>u"] = { name = "+ui" },
+        ["<leader>w"] = { name = "+windows" },
+        ["<leader>x"] = { name = "+diagnostics/quickfix" },
+      })
+    end,
+  },
+
 
   { "tpope/vim-fugitive" },
   { "Lokaltog/vim-easymotion" },
