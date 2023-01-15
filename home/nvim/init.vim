@@ -85,9 +85,6 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-nnoremap // :TComment<CR>j
-vnoremap // :TComment<CR>
-
 " Bundle 'godlygeek/tabular'
 nmap <Leader>t= :Tabularize /=<CR>
 vmap <Leader>t= :Tabularize /=<CR>

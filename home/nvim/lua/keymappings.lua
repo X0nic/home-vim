@@ -2,8 +2,6 @@
 local keymap = vim.keymap.set
 local opts = {}
 
--- Plugins --
-
 -- FZF
 -- " set rtp+=/usr/local/opt/fzf
 -- nnoremap <C-p> :FZF<Cr>
@@ -43,3 +41,11 @@ keymap("", "<leader>0", ":tablast<CR>")
 
 -- Quick new tab
 keymap("", "<leader>tn", ":tabe %<cr>")
+
+-- Comment
+-- nnoremap // :TComment<CR>j
+-- vnoremap // :TComment<CR>
+-- keymap("n", "//", ":TComment<CR>j", { noremap = true })
+-- keymap("v", "//", ":TComment<CR>", { noremap = true })
+keymap("n", "//", ":CommentToggle<CR>j", { noremap = true })
+keymap("v", "//", ":CommentToggle<CR>", { noremap = true })

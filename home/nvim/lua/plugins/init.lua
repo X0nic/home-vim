@@ -1,3 +1,5 @@
+local icons = require("icons")
+
 return {
   -- lsp
   {
@@ -100,16 +102,6 @@ return {
   -- use { "akinsho/bufferline.nvim", requires = 'nvim-tree/nvim-web-devicons' }
 
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
-  },
-  {
-    "SmiteshP/nvim-navic",
-    opts = { separator = " ", highlight = true, depth_limit = 5 },
-    dependencies = "neovim/nvim-lspconfig",
-  },
-
-  {
     "folke/trouble.nvim",
     dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
     config = function()
@@ -119,50 +111,63 @@ return {
 
   -- git
   {
-  'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
+    'lewis6991/gitsigns.nvim',
+    config = true,
+    opts = {
+      signs = {
+        add = {
+          hl = "GitSignsAdd",
+          text = icons.ui.BoldLineLeft,
+          numhl = "GitSignsAddNr",
+          linehl = "GitSignsAddLn",
+        },
+        change = {
+          hl = "GitSignsChange",
+          text = icons.ui.BoldLineLeft,
+          numhl = "GitSignsChangeNr",
+          linehl = "GitSignsChangeLn",
+        },
+        delete = {
+          hl = "GitSignsDelete",
+          text = icons.ui.Triangle,
+          numhl = "GitSignsDeleteNr",
+          linehl = "GitSignsDeleteLn",
+        },
+        topdelete = {
+          hl = "GitSignsDelete",
+          text = icons.ui.Triangle,
+          numhl = "GitSignsDeleteNr",
+          linehl = "GitSignsDeleteLn",
+        },
+        changedelete = {
+          hl = "GitSignsChange",
+          text = icons.ui.BoldLineLeft,
+          numhl = "GitSignsChangeNr",
+          linehl = "GitSignsChangeLn",
+        },
+      },
+    },
   },
 
   { "tpope/vim-fugitive" },
   { "Lokaltog/vim-easymotion" },
   -- use "rstacruz/sparkup", {'rtp': 'vim/'}
-  { "tpope/vim-rails" },
+
   { "tpope/vim-surround" },
-  { "tpope/vim-rake" },
   { "tpope/vim-projectionist" },
-  { "ecomba/vim-ruby-refactoring" },
 
   { "mbbill/undotree" },
   { "preservim/vimux" },
   { "morhetz/gruvbox" },
-  { "kchmck/vim-coffee-script" },
-  -- use "elixir-lang/vim-elixir"
   -- use "osyo-manga/vim-over"
 
-  { "mustache/vim-mustache-handlebars" },
-  { "lambdatoast/elm.vim" },
-  { "rust-lang/rust.vim" },
   { "slim-template/vim-slim" },
   { "digitaltoad/vim-pug" },
   { "ternjs/tern_for_vim" },
-  { "tomlion/vim-solidity" },
-  { "tomtom/tcomment_vim" },
   { "christoomey/vim-tmux-navigator" },
   -- { "mhinz/vim-signify" },
   -- { "ryanoasis/vim-devicons" },
   -- { "adelarsq/vim-devicons-emoji" },
-  { "jvirtanen/vim-hcl" },
-
-  -- Scala
-  {
-    "scalameta/nvim-metals",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "mfussenegger/nvim-dap",
-    },
-  },
 
   -- use "desert-warm-256"
   -- use "croaky/vim-colors-github"

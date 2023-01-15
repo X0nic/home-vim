@@ -20,5 +20,6 @@ null_ls.setup {
     formatting.scalafmt,
     diagnostics.flake8,
     diagnostics.rubocop,
+    null_ls.builtins.code_actions.gitsigns,
   },
 }
