@@ -9,22 +9,7 @@ filetype plugin indent on
 source ~/.config/nvim/config.vim
 
 lua << EOF
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup("plugins")
-
--- require("plugins_old")
+require("plugin-loader")
 EOF
 
 " Set the vim theme
