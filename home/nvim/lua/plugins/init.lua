@@ -37,19 +37,27 @@ return {
   { "RRethy/vim-illuminate" },
 
   -- tree
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons', -- optional, for file icons
-    }
-  },
+  -- {
+  --   'nvim-tree/nvim-tree.lua',
+  --   dependencies = {
+  --     'nvim-tree/nvim-web-devicons', -- optional, for file icons
+  --   }
+  -- },
 
   -- Fuzzy finding
-  {'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   {
     "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    version = false, -- telescope did only one release, so use HEAD for now
     dependencies = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+    opts = {
+      defaults = {
+        prompt_prefix = " ",
+        selection_caret = " ",
+      },
+    },
   },
+  {'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   { "junegunn/fzf", build = vim.fn['fzf#install()']  },
   {
     "nvim-telescope/telescope-frecency.nvim",
@@ -214,7 +222,7 @@ return {
         ["<leader>g"] = { name = "+git" },
         ["<leader>gh"] = { name = "+hunks" },
         ["<leader>q"] = { name = "+quit/session" },
-        ["<leader>s"] = { name = "+search" },
+        ["<leader>s"] = { name = "+test" },
         ["<leader>sn"] = { name = "+noice" },
         ["<leader>u"] = { name = "+ui" },
         ["<leader>w"] = { name = "+windows" },
@@ -222,10 +230,21 @@ return {
       })
     end,
   },
-
+  -- session management
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help" } },
+    -- stylua: ignore
+    keys = {
+      { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
+      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
+      { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
+    },
+  },
 
   { "tpope/vim-fugitive" },
-  { "Lokaltog/vim-easymotion" },
+  -- { "Lokaltog/vim-easymotion" },
   -- use "rstacruz/sparkup", {'rtp': 'vim/'}
 
   { "tpope/vim-surround" },

@@ -67,6 +67,8 @@ return {
         bottom_search = false,
         -- command_palette = true,
         long_message_to_split = true,
+        inc_rename = true,
+        -- cmdline_output_to_split = true,
       },
       views = {
         cmdline_popup = {
