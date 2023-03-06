@@ -12,7 +12,7 @@ lsp.configure('solargraph', {
   }
 })
 
-lsp.configure('sumneko_lua', {
+lsp.configure('lua_ls', {
   settings = {
     Lua = {
       diagnostics = {
