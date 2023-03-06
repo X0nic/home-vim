@@ -249,6 +249,8 @@ return {
 
   { "tpope/vim-surround" },
   { "tpope/vim-projectionist" },
+  { "tpope/vim-rails" },
+  { "tpope/vim-rake" },
 
   { "mbbill/undotree" },
   { "preservim/vimux" },
