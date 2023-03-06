@@ -248,9 +248,12 @@ return {
   -- use "rstacruz/sparkup", {'rtp': 'vim/'}
 
   { "tpope/vim-surround" },
-  { "tpope/vim-projectionist" },
-  { "tpope/vim-rails" },
-  { "tpope/vim-rake" },
+  { "tpope/vim-rails",
+    dependencies = {"tpope/vim-projectionist"}
+  },
+  { "tpope/vim-rake",
+    dependencies = {"tpope/vim-projectionist"}
+  },
 
   { "mbbill/undotree" },
   { "preservim/vimux" },
