@@ -22,6 +22,14 @@ lsp.configure('lua_ls', {
   },
 })
 
+lsp.configure("yamlls", {
+  settings = {
+    yaml = {
+      keyOrdering = false
+    }
+  }
+})
+
 local navic = require("nvim-navic")
 lsp.on_attach(function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
