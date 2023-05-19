@@ -1,7 +1,7 @@
 return {
-  { "kchmck/vim-coffee-script" },
-  { "tpope/vim-rails" },
-  { "tpope/vim-rake" },
+  -- { "kchmck/vim-coffee-script" },
+  -- { "tpope/vim-rails" },
+  -- { "tpope/vim-rake" },
   { "mustache/vim-mustache-handlebars" },
   { "lambdatoast/elm.vim" },
   -- { "rust-lang/rust.vim" },
