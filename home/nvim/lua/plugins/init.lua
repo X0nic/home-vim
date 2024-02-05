@@ -271,6 +271,8 @@ return {
   { "mbbill/undotree" },
   { "preservim/vimux" },
   { "morhetz/gruvbox" },
+  { "endel/vim-github-colorscheme" },
+  { "romainl/flattened" },
   -- use "osyo-manga/vim-over"
 
   { "slim-template/vim-slim" },
