@@ -6,9 +6,9 @@ return {
     'VonHeikemen/lsp-zero.nvim',
     dependencies = {
       -- LSP Support
-      {'neovim/nvim-lspconfig'},
-      {'williamboman/mason.nvim'},
-      {'williamboman/mason-lspconfig.nvim'},
+      { 'neovim/nvim-lspconfig' },
+      { 'williamboman/mason.nvim' },
+      { 'williamboman/mason-lspconfig.nvim' },
       -- In order to load custom rubocop diagnostics, run these commands.
       -- https://github.com/williamboman/mason.nvim/issues/383
       -- https://github.com/williamboman/mason.nvim/issues/392
@@ -17,16 +17,16 @@ return {
       -- GEM_PATH="/home/nate/.local/share/nvim/mason/packages/solargraph" GEM_HOME="/home/nate/.local/share/nvim/mason/packages/solargraph" gem install activesupport -v 6.1.7
 
       -- Autocompletion
-      {'hrsh7th/nvim-cmp'},
-      {'hrsh7th/cmp-buffer'},
-      {'hrsh7th/cmp-path'},
-      {'saadparwaiz1/cmp_luasnip'},
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'hrsh7th/cmp-nvim-lua'},
+      { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lua' },
 
       -- Snippets
-      {'L3MON4D3/LuaSnip'},
-      {'rafamadriz/friendly-snippets'},
+      { 'L3MON4D3/LuaSnip' },
+      { 'rafamadriz/friendly-snippets' },
     }
   },
 
@@ -57,14 +57,14 @@ return {
       },
     },
   },
-  {'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-  { "junegunn/fzf", build = vim.fn['fzf#install()']  },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  { "junegunn/fzf",                             build = vim.fn['fzf#install()'] },
   {
     "nvim-telescope/telescope-frecency.nvim",
     config = function()
-      require"telescope".load_extension("frecency")
+      require "telescope".load_extension("frecency")
     end,
-    dependencies = {"kkharji/sqlite.lua"}
+    dependencies = { "kkharji/sqlite.lua" }
   },
 
 
@@ -116,7 +116,7 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
     opts = { use_diagnostic_signs = true },
     keys = {
-      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Document Diagnostics (Trouble)" },
       { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
     },
   },
@@ -172,29 +172,29 @@ return {
           if vim.wo.diff then return ']c' end
           vim.schedule(function() gs.next_hunk() end)
           return '<Ignore>'
-        end, {expr=true})
+        end, { expr = true })
 
         map('n', '[c', function()
           if vim.wo.diff then return '[c' end
           vim.schedule(function() gs.prev_hunk() end)
           return '<Ignore>'
-        end, {expr=true})
+        end, { expr = true })
 
         -- Actions
-        map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>', { desc = "Stage Hunk" })
-        map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
+        map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>', { desc = "Stage Hunk" })
+        map({ 'n', 'v' }, '<leader>hr', ':Gitsigns reset_hunk<CR>')
         map('n', '<leader>hS', gs.stage_buffer)
         map('n', '<leader>hu', gs.undo_stage_hunk)
         map('n', '<leader>hR', gs.reset_buffer)
         map('n', '<leader>hp', gs.preview_hunk)
-        map('n', '<leader>hb', function() gs.blame_line{full=true} end)
+        map('n', '<leader>hb', function() gs.blame_line { full = true } end)
         map('n', '<leader>tb', gs.toggle_current_line_blame)
         map('n', '<leader>hd', gs.diffthis)
         map('n', '<leader>hD', function() gs.diffthis('~') end)
         map('n', '<leader>td', gs.toggle_deleted)
 
         -- Text object
-        map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
       end
     },
   },
@@ -237,9 +237,9 @@ return {
     opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help" } },
     -- stylua: ignore
     keys = {
-      { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
+      { "<leader>qs", function() require("persistence").load() end,                desc = "Restore Session" },
       { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
-      { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
+      { "<leader>qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
     },
   },
 
@@ -259,11 +259,13 @@ return {
   -- use "rstacruz/sparkup", {'rtp': 'vim/'}
 
   -- { "tpope/vim-surround" },
-  { "tpope/vim-rails",
-    dependencies = {"tpope/vim-projectionist"}
+  {
+    "tpope/vim-rails",
+    dependencies = { "tpope/vim-projectionist" }
   },
-  { "tpope/vim-rake",
-    dependencies = {"tpope/vim-projectionist"}
+  {
+    "tpope/vim-rake",
+    dependencies = { "tpope/vim-projectionist" }
   },
 
   { "mbbill/undotree" },
