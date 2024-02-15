@@ -65,10 +65,10 @@ nvim_tree.setup {
     enable = true,
     show_on_dirs = true,
     icons = {
-      hint = icons.diagnostics.BoldHint,
-      info = icons.diagnostics.BoldInformation,
-      warning = icons.diagnostics.BoldWarning,
-      error = icons.diagnostics.BoldError,
+      hint = icons.diagnostics.Hint,
+      info = icons.diagnostics.Info,
+      warning = icons.diagnostics.Warn,
+      error = icons.diagnostics.Error,
     },
   },
   view = {
