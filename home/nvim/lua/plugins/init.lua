@@ -3,12 +3,12 @@ local icons = require("icons")
 return {
   -- lsp
   {
-    'VonHeikemen/lsp-zero.nvim',
+    "VonHeikemen/lsp-zero.nvim",
     dependencies = {
       -- LSP Support
-      { 'neovim/nvim-lspconfig' },
-      { 'williamboman/mason.nvim' },
-      { 'williamboman/mason-lspconfig.nvim' },
+      { "neovim/nvim-lspconfig" },
+      { "williamboman/mason.nvim" },
+      { "williamboman/mason-lspconfig.nvim" },
       -- In order to load custom rubocop diagnostics, run these commands.
       -- https://github.com/williamboman/mason.nvim/issues/383
       -- https://github.com/williamboman/mason.nvim/issues/392
@@ -17,17 +17,17 @@ return {
       -- GEM_PATH="/home/nate/.local/share/nvim/mason/packages/solargraph" GEM_HOME="/home/nate/.local/share/nvim/mason/packages/solargraph" gem install activesupport -v 6.1.7
 
       -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'saadparwaiz1/cmp_luasnip' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-nvim-lua' },
+      { "hrsh7th/nvim-cmp" },
+      { "hrsh7th/cmp-buffer" },
+      { "hrsh7th/cmp-path" },
+      { "saadparwaiz1/cmp_luasnip" },
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-nvim-lua" },
 
       -- Snippets
-      { 'L3MON4D3/LuaSnip' },
-      { 'rafamadriz/friendly-snippets' },
-    }
+      { "L3MON4D3/LuaSnip" },
+      { "rafamadriz/friendly-snippets" },
+    },
   },
 
   -- use { "williamboman/mason.nvim" }
@@ -35,6 +35,63 @@ return {
   -- use("neovim/nvim-lspconfig")
   { "jose-elias-alvarez/null-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } }, -- for formatters and linters
   { "RRethy/vim-illuminate" },
+  -- Can't get rubocop to work
+  -- {
+  --   "stevearc/conform.nvim",
+  --   event = { "BufWritePre" },
+  --   cmd = { "ConformInfo" },
+  --   keys = {
+  --     {
+  --       -- Customize or remove this keymap to your liking
+  --       "<leader>cf",
+  --       function()
+  --         require("conform").format({ async = true, lsp_fallback = false })
+  --       end,
+  --       mode = "",
+  --       desc = "Format buffer",
+  --     },
+  --   },
+  --   -- Everything in opts will be passed to setup()
+  --   opts = {
+  --     notify_on_error = true,
+  --     log_level = vim.log.levels.DEBUG,
+  --     -- Define your formatters
+  --     formatters_by_ft = {
+  --       lua = { "stylua" },
+  --       python = { "isort", "black" },
+  --       javascript = { { "prettierd", "prettier" } },
+  --       ruby = { "rubocop" },
+  --     },
+  --     -- Set up format-on-save
+  --     format_on_save = {
+  --       timeout_ms = 500,
+  --       -- timeout_ms = 10000,
+  --       lsp_fallback = false,
+  --     },
+  --     -- Customize formatters
+  --     formatters = {
+  --       shfmt = {
+  --         prepend_args = { "-i", "2" },
+  --       },
+  --       -- rubocop = {
+  --       --   args = {
+  --       --     "--server",
+  --       --     "-a",
+  --       --     "-f",
+  --       --     "quiet",
+  --       --     "--stderr",
+  --       --     "--stdin",
+  --       --     "$FILENAME",
+  --       --   },
+  --       --   exit_codes = { 0, 1 },
+  --       -- },
+  --     },
+  --   },
+  --   init = function()
+  --     -- If you want the formatexpr, here is the place to set it
+  --     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+  --   end,
+  -- },
 
   -- tree
   -- {
@@ -57,16 +114,15 @@ return {
       },
     },
   },
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-  { "junegunn/fzf",                             build = vim.fn['fzf#install()'] },
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  { "junegunn/fzf",                             build = vim.fn["fzf#install()"] },
   {
     "nvim-telescope/telescope-frecency.nvim",
     config = function()
-      require "telescope".load_extension("frecency")
+      require("telescope").load_extension("frecency")
     end,
-    dependencies = { "kkharji/sqlite.lua" }
+    dependencies = { "kkharji/sqlite.lua" },
   },
-
 
   -- CoC
   -- use { "neoclide/coc.nvim", branch = 'release'}
@@ -78,7 +134,6 @@ return {
   --   build = ":TSUpdate",
   -- },
   -- { "nvim-treesitter/nvim-treesitter-textobjects" },
-
 
   -- -- Autocomplete
   -- use({
@@ -113,7 +168,7 @@ return {
   {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble" },
-    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- optional, for file icons
     opts = { use_diagnostic_signs = true },
     keys = {
       { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Document Diagnostics (Trouble)" },
@@ -123,7 +178,7 @@ return {
 
   -- git
   {
-    'lewis6991/gitsigns.nvim',
+    "lewis6991/gitsigns.nvim",
     config = true,
     opts = {
       signs = {
@@ -168,34 +223,46 @@ return {
         end
 
         -- Navigation
-        map('n', ']c', function()
-          if vim.wo.diff then return ']c' end
-          vim.schedule(function() gs.next_hunk() end)
-          return '<Ignore>'
+        map("n", "]c", function()
+          if vim.wo.diff then
+            return "]c"
+          end
+          vim.schedule(function()
+            gs.next_hunk()
+          end)
+          return "<Ignore>"
         end, { expr = true })
 
-        map('n', '[c', function()
-          if vim.wo.diff then return '[c' end
-          vim.schedule(function() gs.prev_hunk() end)
-          return '<Ignore>'
+        map("n", "[c", function()
+          if vim.wo.diff then
+            return "[c"
+          end
+          vim.schedule(function()
+            gs.prev_hunk()
+          end)
+          return "<Ignore>"
         end, { expr = true })
 
         -- Actions
-        map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>', { desc = "Stage Hunk" })
-        map({ 'n', 'v' }, '<leader>hr', ':Gitsigns reset_hunk<CR>')
-        map('n', '<leader>hS', gs.stage_buffer)
-        map('n', '<leader>hu', gs.undo_stage_hunk)
-        map('n', '<leader>hR', gs.reset_buffer)
-        map('n', '<leader>hp', gs.preview_hunk)
-        map('n', '<leader>hb', function() gs.blame_line { full = true } end)
-        map('n', '<leader>tb', gs.toggle_current_line_blame)
-        map('n', '<leader>hd', gs.diffthis)
-        map('n', '<leader>hD', function() gs.diffthis('~') end)
-        map('n', '<leader>td', gs.toggle_deleted)
+        map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { desc = "Stage Hunk" })
+        map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
+        map("n", "<leader>hS", gs.stage_buffer)
+        map("n", "<leader>hu", gs.undo_stage_hunk)
+        map("n", "<leader>hR", gs.reset_buffer)
+        map("n", "<leader>hp", gs.preview_hunk)
+        map("n", "<leader>hb", function()
+          gs.blame_line({ full = true })
+        end)
+        map("n", "<leader>tb", gs.toggle_current_line_blame)
+        map("n", "<leader>hd", gs.diffthis)
+        map("n", "<leader>hD", function()
+          gs.diffthis("~")
+        end)
+        map("n", "<leader>td", gs.toggle_deleted)
 
         -- Text object
-        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-      end
+        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+      end,
     },
   },
 
@@ -251,7 +318,7 @@ return {
       require("nvim-surround").setup({
         -- Configuration here, or leave empty to use defaults
       })
-    end
+    end,
   },
 
   { "tpope/vim-fugitive" },
@@ -261,11 +328,11 @@ return {
   -- { "tpope/vim-surround" },
   {
     "tpope/vim-rails",
-    dependencies = { "tpope/vim-projectionist" }
+    dependencies = { "tpope/vim-projectionist" },
   },
   {
     "tpope/vim-rake",
-    dependencies = { "tpope/vim-projectionist" }
+    dependencies = { "tpope/vim-projectionist" },
   },
 
   { "mbbill/undotree" },

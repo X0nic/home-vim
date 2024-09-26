@@ -1,4 +1,4 @@
-local lualine = require('lualine')
+local lualine = require("lualine")
 local icons = require("icons")
 
 -- lunar vim
@@ -32,13 +32,17 @@ local diagnostics = {
     function() return require("nvim-navic").get_location() end,
     cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
   },
-  'g:metals_status',
+  "g:metals_status",
 }
 
 local diff = {
   "diff",
   colored = false,
-  symbols = { added = icons.git.LineAdded .. " ", modified = icons.git.LineModified .. " ", removed = icons.git.LineRemoved .. " " }, -- changes diff symbols
+  symbols = {
+    added = icons.git.LineAdded .. " ",
+    modified = icons.git.LineModified .. " ",
+    removed = icons.git.LineRemoved .. " ",
+  }, -- changes diff symbols
   cond = hide_in_width,
 }
 
@@ -56,7 +60,7 @@ local spaces = function()
   return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
-lualine.setup {
+lualine.setup({
   options = {
     globalstatus = true,
     icons_enabled = true,
@@ -68,11 +72,11 @@ lualine.setup {
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = {"branch"},
+    lualine_b = { "branch" },
     -- lualine_c = { diagnostics, 'g:metals_status' },
     lualine_c = diagnostics,
     lualine_x = { diff, spaces, "encoding", filetype },
     lualine_y = { location },
     lualine_z = { "progress" },
   },
-}
+})
